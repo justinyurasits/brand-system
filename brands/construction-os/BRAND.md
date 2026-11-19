@@ -86,6 +86,7 @@ The register itself lives in the project that issues the documents (the website 
 
 **Known gaps, to fix in follow-up changes:**
 - `cos-header.css` sets `.cos-nav__marker` in monospace, which base §10 prohibits.
+- `svg/icon-custom-solutions.svg` is the Purpose-Built Systems icon, used on `products/custom-solutions.html`. It isn't part of the §4 glyph family and still uses retired colors (`#111111`, steel `#476776`). Decide whether Purpose-Built Systems is a fifth product with its own glyph, then redraw or retire it.
 
 ---
 
@@ -94,4 +95,4 @@ The register itself lives in the project that issues the documents (the website 
 | Rev | Date | Change |
 |---|---|---|
 | 01 | 2026-11-19 | Split from BRAND_SYSTEM.md rev 13: mark (§10), product wordmarks (§3), product glyphs (§10), registers (§6). Wordmark and lockup rules kept from the retired `CONSTRUCTION-OS-BRAND-KIT.md`, with clear space restated for the 32-unit plate. That file's palette, stroke table and benefits-band spec predate base rev 08 and were dropped. |
-| 02 | 2026-11-19 | `svg/cos-mark.svg` redrawn to §2 (stroke 11, 32×32 plate at 34,34, `--c-mark`); retired steel and revision-red fallbacks removed. `svg/cos-mark-sm.svg` unchanged in geometry, embedded C2PA metadata stripped. Four `svg/icon-*.svg` (retired benefits-band icons) replaced by `svg/glyph-*.svg`, taken from the website home page and matching §4. |
+| 02 | 2026-11-19 | `svg/cos-mark.svg` redrawn to §2 (stroke 11, 32×32 plate at 34,34, `--c-mark`); retired steel and revision-red fallbacks removed. `svg/cos-mark-sm.svg` unchanged in geometry, embedded C2PA metadata stripped. Four retired benefits-band `svg/icon-*.svg` replaced by `svg/glyph-*.svg`, taken from the website home page and matching §4. `icon-custom-solutions.svg` kept (still in use) and listed as a gap. |
