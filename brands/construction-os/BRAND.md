@@ -2,8 +2,8 @@
 
 **Sheet:** BRAND-003
 **Issued:** 2026-11-19
-**Revision:** 02
-**Base:** BRAND-002 (`../../BRAND_SYSTEM.md`) rev 14
+**Revision:** 03
+**Base:** BRAND-002 (`../../BRAND_SYSTEM.md`) rev 15
 
 This file adds Construction OS identity to the base system: the mark, the product names and glyphs, and the document registers. Every other rule — color, type, lines, primitives, composition, prohibitions — comes from `BRAND_SYSTEM.md`, and where the two disagree the base wins. Change this file the same way: add the treatment with its reasoning, increment the revision, then implement.
 
@@ -85,7 +85,6 @@ The register itself lives in the project that issues the documents (the website 
 **Using the SVGs.** Strokes read `--glyph-p`, `--glyph-s` and `--glyph-delta`, and the plate reads `--c-mark`. Inline in a page, set those per row or surface (dark rows: `--glyph-p` and `--glyph-s` white, `--glyph-delta` `--c-mark-lift`). Loaded as an image, they fall back to the light-surface colors: primary `currentColor`, secondary graphite, delta and plate `#692524`.
 
 **Known gaps, to fix in follow-up changes:**
-- `cos-header.css` sets `.cos-nav__marker` in monospace, which base §10 prohibits.
 - `svg/icon-custom-solutions.svg` is the Purpose-Built Systems icon, used on `products/custom-solutions.html`. It isn't part of the §4 glyph family and still uses retired colors (`#111111`, steel `#476776`). Decide whether Purpose-Built Systems is a fifth product with its own glyph, then redraw or retire it.
 
 ---
@@ -96,3 +95,4 @@ The register itself lives in the project that issues the documents (the website 
 |---|---|---|
 | 01 | 2026-11-19 | Split from BRAND_SYSTEM.md rev 13: mark (§10), product wordmarks (§3), product glyphs (§10), registers (§6). Wordmark and lockup rules kept from the retired `CONSTRUCTION-OS-BRAND-KIT.md`, with clear space restated for the 32-unit plate. That file's palette, stroke table and benefits-band spec predate base rev 08 and were dropped. |
 | 02 | 2026-11-19 | `svg/cos-mark.svg` redrawn to §2 (stroke 11, 32×32 plate at 34,34, `--c-mark`); retired steel and revision-red fallbacks removed. `svg/cos-mark-sm.svg` unchanged in geometry, embedded C2PA metadata stripped. Four retired benefits-band `svg/icon-*.svg` replaced by `svg/glyph-*.svg`, taken from the website home page and matching §4. `icon-custom-solutions.svg` kept (still in use) and listed as a gap. |
+| 03 | 2026-11-19 | `cos-header.css` brought to base rev 15. CTA hover was the retired `--c-steel` (no longer defined, so the hover had no fill); it now follows base §7 interactive states — ink fill inverts to outline, with a 1.5px border at rest and a 2px focus ring. `.cos-nav__marker` moved from monospace to Archivo annotation style with tabular figures (base §10). `.cos-nav__group-label` uppercase and steel removed: sentence case, annotation tracking, `--fg-muted` (base §3). Known gap for the marker removed. |

@@ -11,8 +11,10 @@
 .cos-nav { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
 .cos-nav a:not(.cos-header__cta) { display: flex; align-items: center; line-height: 1; font: 500 15px/1 var(--font-display, var(--font)); color: var(--c-graphite); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; }
 .cos-nav a:not(.cos-header__cta)[aria-current="page"] { color: var(--c-ink); border-bottom-color: var(--c-ink); }
-.cos-header__cta { display: inline-flex; align-items: center; min-height: 44px; padding: 13px 20px; font: 600 14px/1 var(--font-display, var(--font)); letter-spacing: -.01em; text-decoration: none; background: var(--c-ink); color: var(--c-white); white-space: nowrap; box-sizing: border-box; }
-.cos-header__cta:hover { background: var(--c-steel); color: var(--c-white); }
+.cos-header__cta { display: inline-flex; align-items: center; min-height: 44px; padding: 13px 20px; font: 600 14px/1 var(--font-display, var(--font)); letter-spacing: -.01em; text-decoration: none; background: var(--btn-bg); color: var(--btn-fg); border: var(--w-cut) solid var(--btn-border); white-space: nowrap; box-sizing: border-box; }
+/* Interactive states — BRAND_SYSTEM.md §7: filled button inverts to outline on hover; 2px fg focus ring. */
+.cos-header__cta:hover { background: transparent; color: var(--btn-border); }
+.cos-header__cta:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 .cos-header__toggle { display: none; background: none; border: none; cursor: pointer; font: 600 14px/1 var(--font-display, var(--font)); color: var(--c-ink); padding: 0; flex-shrink: 0; min-height: 44px; align-items: center; }
 .cos-nav__dropdown { position: relative; display: flex; align-items: center; }
 .cos-nav__trigger { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; padding: 0 0 2px; margin: 0; cursor: pointer; display: flex; align-items: center; line-height: 1; gap: 4px; font: 500 15px/1 var(--font-display, var(--font)); color: var(--c-graphite); }
@@ -24,11 +26,11 @@
 .cos-menu__item { flex-direction: column; gap: 3px; }
 .cos-menu__gloss { font: 400 13px/1.5 var(--font-display, var(--font)); color: var(--c-graphite); }
 .cos-nav__dropdown.is-open .cos-nav__panel { display: block; }
-.cos-nav__group-label { display: block; font: 600 11px/1 var(--font-display, var(--font)); letter-spacing: .14em; text-transform: uppercase; color: var(--c-steel); margin-top: 20px; margin-bottom: 8px; }
+.cos-nav__group-label { display: block; font: 600 var(--fs-annotation)/1 var(--font-display, var(--font)); letter-spacing: var(--tr-annotation); color: var(--fg-muted); margin-top: 20px; margin-bottom: 8px; }
 .cos-nav__group-label:first-child { margin-top: 0; }
 .cos-nav__item { display: flex; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--c-line); text-decoration: none; margin-inline: -20px; padding-inline: 20px; }
 .cos-nav__item:hover, .cos-nav__item:focus-visible { background: var(--c-bond); outline: none; }
-.cos-nav__marker { width: 28px; flex: none; font: 400 11px/1 ui-monospace, 'Courier New', monospace; color: var(--c-graphite); }
+.cos-nav__marker { width: 28px; flex: none; font: 400 var(--fs-annotation)/1 var(--font-display, var(--font)); letter-spacing: var(--tr-annotation); font-variant-numeric: tabular-nums; color: var(--c-graphite); }
 .cos-nav__name { font: 600 16px/1 var(--font-display, var(--font)); letter-spacing: -.015em; color: var(--c-ink); }
 
 @media (max-width: 899px) {
