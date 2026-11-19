@@ -2,12 +2,14 @@
 
 **Sheet:** BRAND-002
 **Issued:** 2026-09-30
-**Revision:** 13
+**Revision:** 14
 **Supersedes:** BRAND-001 (specimen)
 
-This file is the authority on what this brand looks like. It governs the website, PDFs, Word documents, decks, and carousels. When a rule here conflicts with anything else in this repository, or with an existing stylesheet, this file wins.
+This file is the authority on what this system looks like. It governs every site, app, PDF, Word document, deck, and carousel built on it. When a rule here conflicts with anything else, or with an existing stylesheet, this file wins.
 
-**For Claude Code:** read this file before changing anything visual. Replace existing styles rather than reconciling with them — the previous site was built to different rules and merging the two produces neither. If you need a visual treatment that is not defined here, add it to this file first, with its reasoning, and increment the revision. Do not invent one-off treatments in page code.
+**Sub-brands.** Each sub-brand lives in `brands/<name>/BRAND.md` and adds identity only: its mark, product names and glyphs, and document registers. A sub-brand may use the exceptions this file names for it and may not override any other rule. Current sub-brands: Construction OS (`brands/construction-os/BRAND.md`).
+
+**For Claude Code:** read this file before changing anything visual. Replace existing styles rather than reconciling with them — merging two systems built to different rules produces neither. If you need a visual treatment that is not defined here, add it to this file first, with its reasoning, and increment the revision. Do not invent one-off treatments in page code.
 
 ---
 
@@ -114,7 +116,7 @@ Body prose sets to a maximum of 68 characters. All numerals use `font-variant-nu
 
 Sentence case everywhere in language. Capitals are reserved for identifiers that genuinely are codes: `CASE-003`, `REV 02`. Never `PALETTE`, never `OUR PROCESS`, never a capitalized label above a headline.
 
-**Exception — product wordmarks.** The four product names in the §3 system section (Construction Intelligence, Document Workbench, Project Intelligence, Operations Automation) may be set in capitals: Archivo 600, 13px, 0.1em tracking, `text-transform: uppercase`. They function as identifiers, not labels. Every other label — eyebrow, status text, quote labels, and all copy — stays sentence case. Status text under a wordmark is plain text, never a chip, box, or pill.
+**Exception — product wordmarks.** A sub-brand may set its product names in capitals, as identifiers rather than labels. This is the only exception to sentence case, and the sub-brand's `BRAND.md` defines the names and the setting. Every other label — eyebrow, status text, quote labels, and all copy — stays sentence case. Status text under a wordmark is plain text, never a chip, box, or pill.
 
 ---
 
@@ -130,7 +132,7 @@ Sentence case everywhere in language. Capitals are reserved for identifiers that
 
 On dark surfaces (ink, navy) the lifted variant `--c-change-lift` (`#D07A6A`) carries the change role — 5.49:1 on ink, 4.69:1 on navy. The change must always be readable by position and label, never by color alone.
 
-**Exception — brand mark and product glyph deltas.** The oxblood square in the Construction OS logo mark is not a change indicator. It uses `--c-mark` (`#692524`, same value as `--c-oxblood`), is fixed regardless of surface, and does not follow `--change`. The delta stroke in each product glyph plays the same plate role as the mark's square — it uses `--c-mark` on light rows and `--c-mark-lift` (`#D07A6A`) on dark rows. Neither `--c-mark` nor `--c-mark-lift` follows `--change`. Red as change and red as mark are separate roles on separate tokens — do not conflate them.
+**Exception — brand marks and glyph deltas.** A sub-brand's mark plate and the delta stroke in its glyphs are not change indicators. They use `--c-mark` (`#692524`, same value as `--c-oxblood`) on light surfaces and `--c-mark-lift` (`#D07A6A`) on dark ones, and neither follows `--change`. Red as change and red as mark are separate roles on separate tokens — do not conflate them. Each sub-brand's `BRAND.md` specifies its mark and glyphs.
 
 ---
 
@@ -159,11 +161,8 @@ Register prefixes:
 | Prefix | Document |
 |---|---|
 | `BRAND` | Brand and system documents |
-| `CASE` | Case studies |
-| `AOS` | Operational architecture assessments |
-| `SOW` | Statements of work and proposals |
-| `SPEC` | Operational architecture specifications (Phase 1 deliverable) |
-| `FN` | Field notes — LinkedIn carousels, short posts |
+
+Each sub-brand adds its own prefixes in its `BRAND.md`.
 
 Format is `PREFIX-NNN`, revisions are `REV NN`, dates are ISO `YYYY-MM-DD`.
 
@@ -242,19 +241,7 @@ Each of these has a reason. A prohibition without a reason gets argued around.
 - **All-caps labels** — see §3.
 - **Monospace for data labels** — the reflexive technical-brand move, and inaccurate: drafting lettering was single-stroke gothic, never monospaced. Archivo with tabular figures does this job.
 - **Blueprint motifs** — grid overlays, drafting compasses, paper texture, blueprint blue, faux stamps.
-- **Icon sets** — no generic line-icon library. Where a mark is needed it is drawn from the line vocabulary in §5. The four product glyphs are a documented family built from the brand mark's geometry, not an icon set:
-
-  The brand mark (22px eyebrow) is drawn on a 100×100 grid: two opposed corner brackets — polyline `16,54 16,16 54,16` and `84,46 84,84 46,84`, stroke 11 — around a centred 32×32 plate (34,34). The bracket is the line; the plate is the change mark.
-
-  The four 40×40 glyphs draw on the same 100×100 grid and take the mark's vocabulary, not its outline. They are companions to the mark, not geometric reductions of it. Grid and terminals: 100-unit grid, orthogonal strokes, butt caps, mitred corners, no curves — as the mark. Stroke hierarchy: the mark's single 11-unit stroke splits into two weights — 9 (primary, = the bracket) and 5 (secondary, = reference/datum). At 40px these render at 3.6px and 2px; do not scale linearly to other sizes. Plate role: where a glyph shows a change or exception, that one stroke takes `--c-mark`/`--c-mark-lift` (the plate's colour role). Only Project Intelligence and Operations Automation carry a delta.
-
-  Per glyph:
-  - **Construction Intelligence:** 5-unit datum on the centre axis (y=50, the mark's axis of symmetry); two 9-unit paths converge on it from y=20/80.
-  - **Document Workbench:** 9-unit sheet `14,26` 52×60; behind it a 5-unit offset corner `30,14 86,14 86,72` — the one direct quotation of a mark bracket.
-  - **Project Intelligence:** 5-unit frame `6,18` 88×64; 9-unit baseline and three bars rising 14/26/38 units; the tallest bar is the delta.
-  - **Operations Automation:** three 9-unit segments on y=28, three 5-unit drops, 9-unit baseline on y=74 as the delta.
-
-  Colour: primary and secondary strokes take the row's foreground on dark rows; on light rows primary is warm black (`--c-ink`), secondary warm graphite (`--c-graphite`). The delta is `--c-mark` on light rows and `--c-mark-lift` on dark rows.
+- **Icon sets** — no generic line-icon library. Where a mark is needed it is drawn from the line vocabulary in §5. A sub-brand may define a glyph family built from its own mark's geometry (see its `BRAND.md`); that is a documented family, not an icon set.
 - **Entrance animation on scroll** — fade-and-slide-up on every section is the generated default. Motion responds to a user action or does not exist.
 - **Dimension figures on oxblood** — the change mark is transparent on that ground, so the changed span cannot be read. Ink and navy are permitted; see §8 rule 7.
 
@@ -299,3 +286,4 @@ Claude Code may not introduce a visual treatment not defined here. If a page nee
 | 11 | 2026-10-01 | §3 type scale rebuilt as eight fluid tokens. `--fs-head` retired; replaced by `--fs-section` at `clamp(40px,5vw,60px)`. `--fs-display` ceiling lowered from 84px to 72px, rate from 6.2vw to 6vw. `--fs-subhead` raised from 18px to `clamp(28px,4.2vw,40px)`. `--fs-lead` added at `clamp(18px,2vw,26px)`. `--fs-figure` added at `clamp(48px,5vw,64px)`. Rule added: no page may declare a font-size outside these tokens. `cqi` units retired in favour of `vw`. `tokens.css` updated: `--lh-head`/`--tr-head` renamed to `--lh-section`/`--tr-section`; `--lh-subhead` updated from 1.35 to 1.1 (role now covers 28–40px); `--lh-lead` and `--lh-small` added. |
 | 12 | 2026-10-02 | §10: `→` (right arrow) allowlisted in `.fig__sep` elements only. The §10 ban targets trailing link arrows (`Read more →`); a `→` used as a value separator between before/after measurement figures is not a link arrow. Rule 7 in `tools/verify.js` updated with `ARROW_HTML_CLASS_ALLOWLIST` and a checkFn that passes when the arrow is the text content of a `.fig__sep` element. §4 proof section redesigned: two-column head (H2 left, founder paragraph right, bottom-aligned), two to-scale dimension drawings (viewBox 480×64; before 0–480, contract after 30 units = 1/16, change-order after 144 units = 3/10), oxblood after lines and figures, warm-graphite before lines and figures. Caption "Measured across roughly twenty real jobs and bids." retained at `--fs-annotation`. |
 | 13 | 2026-11-19 | Corrections only, no visual change. Moved to the `brand-system` repo. §8 rule 7 and §10: retired steel and `--c-revision-lift` references (rev 08) replaced — dimension figures allowed on white, bond, ink and navy, never oxblood, matching §2.4. §9 dark-section limit corrected from two to three to match §2.4 (rev 09). §7 primitive count corrected to seven. §3, §6, §11: paths changed from website paths to this repo, with the register and content kept per project. |
+| 14 | 2026-11-19 | Split into base and sub-brand. Moved to `brands/construction-os/BRAND.md`: the mark, the four product glyphs (§10), the product wordmark names and setting (§3), and the `CASE`/`AOS`/`SOW`/`SPEC`/`FN` registers (§6). Base keeps the rules, generalised: §3 and §4 exceptions now apply to any sub-brand; §6 keeps the format and `BRAND`; §10 allows a sub-brand glyph family. Sub-brand rule added to the header. No token or visual change. |
