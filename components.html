@@ -31,7 +31,7 @@
 <div class="wrap">
 
 <div class="zone zone--tight">
-  <span class="annotation zone__marker">BRAND-002 / REV 03 / 2026-09-04</span>
+  <span class="annotation zone__marker">BRAND-002 / REV 16 / 2026-11-19</span>
   <h1 class="display">Component reference</h1>
   <div class="prose" style="margin-top:24px">
     <p class="lead">Every primitive in the system, rendered. Compose pages from these. Nothing else gets invented in page code.</p>
@@ -70,7 +70,7 @@
 <hr class="rule rule--cut">
 
 <div class="zone zone--tight">
-  <span class="annotation zone__marker">Dimension — measured evidence (white/bond surfaces only)</span>
+  <span class="annotation zone__marker">Dimension — measured evidence (white, bond, ink and navy surfaces; never oxblood)</span>
   <div class="dim" style="max-width:620px">
     <p class="annotation dim__label">Contract package, before</p>
     <div class="dim__track" style="--span:100%">
@@ -193,7 +193,7 @@
 </div><!-- /wrap -->
 
 <!-- ================================================================
-     Surface inversion gallery — each primitive on all four surfaces
+     Surface inversion gallery — each primitive on all five surfaces
      ================================================================ -->
 
 <div class="zone zone--tight" style="background:var(--c-bond)">
@@ -209,7 +209,7 @@
 <!-- Surface: white -->
 <div class="surface-demo surface--white">
   <div class="wrap">
-    <p class="demo-label">surface--white / fg ink #111111 / fg-muted graphite #5F6466 / btn ink fill</p>
+    <p class="demo-label">surface--white / background <span data-token="--c-white">--c-white</span> / fg <span data-token="--c-ink">--c-ink</span> / fg-muted <span data-token="--c-graphite">--c-graphite</span> (11.42:1) / btn ink fill</p>
 
     <div class="demo-row">
       <a class="btn" href="#">Primary button</a>
@@ -250,7 +250,7 @@
         <span class="dim__value dim__value--outside">30 min</span>
       </div>
     </div>
-    <p class="annotation" style="margin-top:var(--s-3)">Dimension — white surface. Change: --c-revision #C43230 (5.46:1 on white, 4.73:1 on bond).</p>
+    <p class="annotation" style="margin-top:var(--s-3)">Dimension — white surface. Changed span: --change → <span data-token="--c-oxblood">--c-oxblood</span> (11.11:1 on white).</p>
 
     <p class="title-block--inline" style="max-width:480px;margin-top:var(--s-6)">Construction OS / HOME / 2026-09-04 / REV 01</p>
   </div>
@@ -259,7 +259,7 @@
 <!-- Surface: bond -->
 <div class="surface-demo surface--bond">
   <div class="wrap">
-    <p class="demo-label">surface--bond / fg ink #111111 / fg-muted graphite #5F6466 / btn ink fill</p>
+    <p class="demo-label">surface--bond / background <span data-token="--c-bond">--c-bond</span> / fg <span data-token="--c-ink">--c-ink</span> / fg-muted <span data-token="--c-graphite">--c-graphite</span> / btn ink fill</p>
 
     <div class="demo-row">
       <a class="btn" href="#">Primary button</a>
@@ -300,7 +300,7 @@
         <span class="dim__value dim__value--outside">30 min</span>
       </div>
     </div>
-    <p class="annotation" style="margin-top:var(--s-3)">Dimension — bond surface. Change: --c-revision #C43230 (4.73:1 on bond, 5.46:1 on white).</p>
+    <p class="annotation" style="margin-top:var(--s-3)">Dimension — bond surface. Changed span: --change → <span data-token="--c-oxblood">--c-oxblood</span> (9.83:1 on ivory).</p>
 
     <p class="title-block--inline" style="max-width:480px;margin-top:var(--s-6)">Construction OS / HOME / 2026-09-04 / REV 01</p>
   </div>
@@ -309,7 +309,7 @@
 <!-- Surface: ink -->
 <div class="surface-demo surface--ink">
   <div class="wrap">
-    <p class="demo-label">surface--ink / fg white #FFFFFF (18.86:1) / fg-muted graphite-lift #949B9E (6.69:1) / btn white fill, ink text</p>
+    <p class="demo-label">surface--ink / background <span data-token="--c-ink">--c-ink</span> / fg <span data-token="--c-white">--c-white</span> / fg-muted <span data-token="--c-muted-dark">--c-muted-dark</span> (7.47:1) / btn white fill, ink text</p>
 
     <div class="demo-row">
       <a class="btn" href="#">Primary button</a>
@@ -317,11 +317,11 @@
     </div>
 
     <hr class="rule rule--cut" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Cut rule — --rule-cut (white)</p>
+    <p class="annotation">Cut rule — --rule-cut (<span data-token="--c-line">--c-line</span>)</p>
     <hr class="rule" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Object rule — --rule-object (line-dark #B1BFC5, 10.01:1)</p>
+    <p class="annotation">Object rule — --rule-object (<span data-token="--c-line">--c-line</span>)</p>
     <hr class="rule rule--dimension" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Dimension rule — --rule-dimension (line-dark #B1BFC5)</p>
+    <p class="annotation">Dimension rule — --rule-dimension (<span data-token="--c-line">--c-line</span>)</p>
 
     <table class="table" style="max-width:480px;margin-top:var(--s-6)">
       <tr><th>Document</th><th>Register</th><th>Rev</th></tr>
@@ -350,16 +350,16 @@
         <span class="dim__value dim__value--outside">30 min</span>
       </div>
     </div>
-    <p class="annotation" style="margin-top:var(--s-3)">Dimension — ink surface. Changed value resolves to --c-revision-lift #E2685E (5.72:1 on ink). Position and label carry the change as well as color.</p>
+    <p class="annotation" style="margin-top:var(--s-3)">Dimension — ink surface. Changed span: --change → <span data-token="--c-change-lift">--c-change-lift</span> (5.49:1 on ink). Position and label carry the change as well as color.</p>
 
     <p class="title-block--inline" style="max-width:480px;margin-top:var(--s-6)">Construction OS / HOME / 2026-09-04 / REV 01</p>
   </div>
 </div>
 
-<!-- Surface: steel -->
-<div class="surface-demo surface--steel">
+<!-- Surface: navy -->
+<div class="surface-demo surface--navy">
   <div class="wrap">
-    <p class="demo-label">surface--steel / fg white #FFFFFF (6.05:1) / fg-muted white — single text level only / btn white fill, ink text</p>
+    <p class="demo-label">surface--navy / background <span data-token="--c-navy">--c-navy</span> / fg <span data-token="--c-white">--c-white</span> / fg-muted <span data-token="--c-muted-dark">--c-muted-dark</span> (6.38:1) / btn white fill, ink text</p>
 
     <div class="demo-row">
       <a class="btn" href="#">Primary button</a>
@@ -367,11 +367,11 @@
     </div>
 
     <hr class="rule rule--cut" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Cut rule — --rule-cut (white)</p>
+    <p class="annotation">Cut rule — --rule-cut (<span data-token="--c-line">--c-line</span>)</p>
     <hr class="rule" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Object rule — --rule-object (line-dark #B1BFC5, 3.21:1)</p>
+    <p class="annotation">Object rule — --rule-object (<span data-token="--c-line">--c-line</span>)</p>
     <hr class="rule rule--dimension" style="margin:var(--s-5) 0 var(--s-2)">
-    <p class="annotation">Dimension rule — --rule-dimension (line-dark #B1BFC5)</p>
+    <p class="annotation">Dimension rule — --rule-dimension (<span data-token="--c-line">--c-line</span>)</p>
 
     <table class="table" style="max-width:480px;margin-top:var(--s-6)">
       <tr><th>Document</th><th>Register</th><th>Rev</th></tr>
@@ -386,11 +386,72 @@
       <div><span class="title-block__label">Revision</span><span class="title-block__value">03</span></div>
     </div>
 
-    <p class="annotation" style="margin-top:var(--s-6)">Dimension figures are not permitted on steel surfaces. See note on ink surface above.</p>
+    <div class="dim" style="max-width:480px;margin-top:var(--s-7)">
+      <p class="annotation dim__label">Contract package, before</p>
+      <div class="dim__track" style="--span:100%">
+        <span class="dim__ext dim__ext--start"></span>
+        <span class="dim__ext dim__ext--end"></span>
+        <span class="dim__value">up to 8 hrs</span>
+      </div>
+      <p class="annotation dim__label">After</p>
+      <div class="dim__track dim__track--changed" style="--span:6.25%">
+        <span class="dim__ext dim__ext--start"></span>
+        <span class="dim__ext dim__ext--end"></span>
+        <span class="dim__value dim__value--outside">30 min</span>
+      </div>
+    </div>
+    <p class="annotation" style="margin-top:var(--s-3)">Dimension — navy surface. Changed span: --change → <span data-token="--c-change-lift">--c-change-lift</span> (4.69:1 on navy). Position and label carry the change as well as color.</p>
 
     <p class="title-block--inline" style="max-width:480px;margin-top:var(--s-6)">Construction OS / HOME / 2026-09-04 / REV 01</p>
   </div>
 </div>
+
+<!-- Surface: oxblood -->
+<div class="surface-demo surface--oxblood">
+  <div class="wrap">
+    <p class="demo-label">surface--oxblood / background <span data-token="--c-oxblood">--c-oxblood</span> / fg <span data-token="--c-white">--c-white</span> / fg-muted <span data-token="--c-muted-dark">--c-muted-dark</span> (4.80:1) / btn white fill, ink text / closing plate only</p>
+
+    <div class="demo-row">
+      <a class="btn" href="#">Primary button</a>
+      <a class="btn btn--ghost" href="#">Ghost button</a>
+    </div>
+
+    <hr class="rule rule--cut" style="margin:var(--s-5) 0 var(--s-2)">
+    <p class="annotation">Cut rule — --rule-cut (<span data-token="--c-line">--c-line</span>)</p>
+    <hr class="rule" style="margin:var(--s-5) 0 var(--s-2)">
+    <p class="annotation">Object rule — --rule-object (<span data-token="--c-line">--c-line</span>)</p>
+    <hr class="rule rule--dimension" style="margin:var(--s-5) 0 var(--s-2)">
+    <p class="annotation">Dimension rule — --rule-dimension (<span data-token="--c-line">--c-line</span>)</p>
+
+    <table class="table" style="max-width:480px;margin-top:var(--s-6)">
+      <tr><th>Document</th><th>Register</th><th>Rev</th></tr>
+      <tr><td>Brand system</td><td>BRAND-002</td><td>03</td></tr>
+      <tr><td>Case study</td><td>BRAND-002</td><td>02</td></tr>
+    </table>
+
+    <div class="title-block" style="margin-top:var(--s-6);max-width:640px">
+      <div><span class="title-block__label">Project</span><span class="title-block__value">Construction OS</span></div>
+      <div><span class="title-block__label">Sheet</span><span class="title-block__value">BRAND-002</span></div>
+      <div><span class="title-block__label">Issued</span><span class="title-block__value">2026-09-04</span></div>
+      <div><span class="title-block__label">Revision</span><span class="title-block__value">03</span></div>
+    </div>
+
+    <p class="annotation" style="margin-top:var(--s-6)">No dimension figure on oxblood. --change is transparent on this ground, so the changed span would disappear (§4, §8 rule 7).</p>
+
+    <p class="title-block--inline" style="max-width:480px;margin-top:var(--s-6)">Construction OS / HOME / 2026-09-04 / REV 01</p>
+  </div>
+</div>
+
+<script>
+/* Fill each [data-token] label with its value from tokens.css, so labels can't drift from the tokens. */
+(function () {
+  var root = getComputedStyle(document.documentElement);
+  document.querySelectorAll('[data-token]').forEach(function (el) {
+    var t = el.getAttribute('data-token'), v = root.getPropertyValue(t).trim();
+    if (v) el.textContent = t + ' ' + v.toUpperCase();
+  });
+})();
+</script>
 
 </body>
 </html>
