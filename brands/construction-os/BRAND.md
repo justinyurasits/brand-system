@@ -2,7 +2,7 @@
 
 **Sheet:** BRAND-003
 **Issued:** 2026-11-19
-**Revision:** 01
+**Revision:** 02
 **Base:** BRAND-002 (`../../BRAND_SYSTEM.md`) rev 14
 
 This file adds Construction OS identity to the base system: the mark, the product names and glyphs, and the document registers. Every other rule — color, type, lines, primitives, composition, prohibitions — comes from `BRAND_SYSTEM.md`, and where the two disagree the base wins. Change this file the same way: add the treatment with its reasoning, increment the revision, then implement.
@@ -78,11 +78,13 @@ The register itself lives in the project that issues the documents (the website 
 |---|---|
 | `cos-header.css`, `cos-footer.css`, `cos-nav.js` | Site header, footer and nav (the `SiteNav` primitive) |
 | `cos-brand-reference.html` | Visual reference page |
-| `svg/` | Mark and icon SVGs — **stale, see below** |
+| `svg/cos-mark.svg` | The mark per §2, 22px |
+| `svg/cos-mark-sm.svg` | Two-bracket form for 16px and single color |
+| `svg/glyph-*.svg` | The four product glyphs per §4, 40px |
+
+**Using the SVGs.** Strokes read `--glyph-p`, `--glyph-s` and `--glyph-delta`, and the plate reads `--c-mark`. Inline in a page, set those per row or surface (dark rows: `--glyph-p` and `--glyph-s` white, `--glyph-delta` `--c-mark-lift`). Loaded as an image, they fall back to the light-surface colors: primary `currentColor`, secondary graphite, delta and plate `#692524`.
 
 **Known gaps, to fix in follow-up changes:**
-- `svg/cos-mark.svg` and `svg/cos-mark-sm.svg` predate rev 08 of the base: stroke 7, a 36×36 plate, and fallbacks to retired steel and revision red. They don't match §2.
-- The four `svg/icon-*.svg` files are the retired benefits-band icons, not the product glyphs in §4. The glyphs exist only inline in the website pages.
 - `cos-header.css` sets `.cos-nav__marker` in monospace, which base §10 prohibits.
 
 ---
@@ -92,3 +94,4 @@ The register itself lives in the project that issues the documents (the website 
 | Rev | Date | Change |
 |---|---|---|
 | 01 | 2026-11-19 | Split from BRAND_SYSTEM.md rev 13: mark (§10), product wordmarks (§3), product glyphs (§10), registers (§6). Wordmark and lockup rules kept from the retired `CONSTRUCTION-OS-BRAND-KIT.md`, with clear space restated for the 32-unit plate. That file's palette, stroke table and benefits-band spec predate base rev 08 and were dropped. |
+| 02 | 2026-11-19 | `svg/cos-mark.svg` redrawn to §2 (stroke 11, 32×32 plate at 34,34, `--c-mark`); retired steel and revision-red fallbacks removed. `svg/cos-mark-sm.svg` unchanged in geometry, embedded C2PA metadata stripped. Four `svg/icon-*.svg` (retired benefits-band icons) replaced by `svg/glyph-*.svg`, taken from the website home page and matching §4. |
