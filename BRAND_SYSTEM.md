@@ -2,7 +2,7 @@
 
 **Sheet:** BRAND-002
 **Issued:** 2026-09-30
-**Revision:** 15
+**Revision:** 16
 **Supersedes:** BRAND-001 (specimen)
 
 This file is the authority on what this system looks like. It governs every site, app, PDF, Word document, deck, and carousel built on it. When a rule here conflicts with anything else, or with an existing stylesheet, this file wins.
@@ -298,3 +298,4 @@ Claude Code may not introduce a visual treatment not defined here. If a page nee
 | 13 | 2026-11-19 | Corrections only, no visual change. Moved to the `brand-system` repo. §8 rule 7 and §10: retired steel and `--c-revision-lift` references (rev 08) replaced — dimension figures allowed on white, bond, ink and navy, never oxblood, matching §2.4. §9 dark-section limit corrected from two to three to match §2.4 (rev 09). §7 primitive count corrected to seven. §3, §6, §11: paths changed from website paths to this repo, with the register and content kept per project. |
 | 14 | 2026-11-19 | Split into base and sub-brand. Moved to `brands/construction-os/BRAND.md`: the mark, the four product glyphs (§10), the product wordmark names and setting (§3), and the `CASE`/`AOS`/`SOW`/`SPEC`/`FN` registers (§6). Base keeps the rules, generalised: §3 and §4 exceptions now apply to any sub-brand; §6 keeps the format and `BRAND`; §10 allows a sub-brand glyph family. Sub-brand rule added to the header. No token or visual change. |
 | 15 | 2026-11-19 | §7: interactive states added. Hover and focus change fill or line weight, never hue — filled buttons invert to outline, ghost buttons fill, link underlines step from object to cut weight, muted links step to `--fg`, focus is a 2px `--fg` outline. Records what `brand.css` already does; needed because `cos-header.css` hovered to the retired steel and no rule said what replaces it. No token change. |
+| 16 | 2026-11-19 | `components.html` rebuilt on the rev 08 palette. No rule or token change. Surface gallery now shows the five current surfaces (white, bond, ink, navy, oxblood); steel removed. Dimension demos on white, bond, ink and navy using `--change`, with a note that none appears on oxblood (§8 rule 7). Labels name role and palette tokens with their §2.1 contrast ratios; hex values are read from `tokens.css` at render time, so the page holds no hard-coded colors. |
