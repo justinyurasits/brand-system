@@ -1,6 +1,6 @@
 /* ─── Construction OS — Shared Footer Styles ────────────────────────────── */
 
-.cos-footer { background: #FFFFFF; border-top: 1px solid #B8B9B5; }
+.cos-footer { background: var(--surface); border-top: 1px solid var(--rule-dimension); }
 .cos-footer__inner { padding-top: 56px; }
 .cos-footer__cols {
   display: flex;
@@ -17,14 +17,14 @@
   text-decoration: none;
   font: 600 17px/1 var(--font-display), sans-serif;
   letter-spacing: -.02em;
-  color: #111111;
+  color: var(--fg);
 }
-.cos-footer__tagline { font: 400 14px/1.55 var(--font-display), sans-serif; color: #5F6466; max-width: 30ch; margin: 0; }
+.cos-footer__tagline { font: 400 14px/1.55 var(--font-display), sans-serif; color: var(--fg-muted); max-width: 30ch; margin: 0; }
 .cos-footer__cta-link {
   font: 600 14px/1 var(--font-display), sans-serif;
-  color: #111111;
+  color: var(--fg);
   text-decoration: none;
-  border-bottom: 2px solid #111111;
+  border-bottom: 2px solid var(--fg);
   padding-bottom: 3px;
   width: fit-content;
 }
@@ -33,9 +33,9 @@
   font: 600 11px/1 var(--font-display), sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--fg);
   padding-bottom: 12px;
-  border-bottom: 1px solid #B8B9B5;
+  border-bottom: 1px solid var(--rule-dimension);
 }
 .cos-footer__col-item {
   display: flex;
@@ -43,36 +43,37 @@
   gap: 10px;
   font: 500 14px/1 var(--font-display), sans-serif;
   letter-spacing: -.005em;
-  color: #5F6466;
+  color: var(--fg-muted);
   text-decoration: none;
   padding-top: 12px;
 }
-.cos-footer__col-item:hover { color: #111111; }
-.cos-footer__col-item--ink { color: #111111; }
+.cos-footer__col-item:hover { color: var(--fg); }
+.cos-footer__col-item--ink { color: var(--fg); }
 .cos-footer__contact-email {
   display: inline-block;
   font: 600 15px/1 var(--font-display), sans-serif;
   letter-spacing: -.015em;
-  color: #111111;
-  text-decoration: none;
-  border-bottom: 2px solid #111111;
-  padding-bottom: 3px;
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: var(--w-object);
+  text-underline-offset: 6px;
   align-self: flex-start;
   margin-top: 12px;
   white-space: nowrap;
 }
-.cos-footer__contact-email:hover { color: #476776; border-bottom-color: #476776; }
-.cos-footer__col-n { font: 400 11px/1 ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace; color: #5F6466; flex: none; }
-.cos-footer__col-dash { font: 400 11px/1 ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace; color: #5F6466; flex: none; }
+/* Link hover — BRAND_SYSTEM.md §7 interactive states: underline steps from object to cut weight, never a new color. */
+.cos-footer__contact-email:hover { text-decoration-thickness: var(--w-cut); }
+.cos-footer__col-n { font: 400 var(--fs-annotation)/1 var(--font-display), sans-serif; letter-spacing: var(--tr-annotation); font-variant-numeric: tabular-nums; color: var(--fg-muted); flex: none; width: 24px; }
+.cos-footer__col-dash { font: 400 var(--fs-annotation)/1 var(--font-display), sans-serif; letter-spacing: var(--tr-annotation); font-variant-numeric: tabular-nums; color: var(--fg-muted); flex: none; width: 24px; }
 .cos-titleblock {
-  border: 1px solid #111111;
-  background: #FFFFFF;
+  border: 1px solid var(--rule-cut);
+  background: var(--surface);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 .cos-titleblock__cell {
   padding: 12px 16px;
-  border-right: 1px solid #B8B9B5;
+  border-right: 1px solid var(--rule-dimension);
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -82,9 +83,10 @@
   font: 600 9px/1 var(--font-display), sans-serif;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: #5F6466;
+  color: var(--fg-muted);
 }
-.cos-titleblock__value { font: 400 12px/1 ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace; color: #111111; }
+/* TitleBlock values — BRAND_SYSTEM.md §7: Archivo small with tabular figures. */
+.cos-titleblock__value { font: 400 var(--fs-small)/1 var(--font-display), sans-serif; font-variant-numeric: tabular-nums; color: var(--fg); }
 .cos-footer__legal {
   padding: 18px 0 40px;
   display: flex;
@@ -92,7 +94,7 @@
   gap: 20px;
   flex-wrap: wrap;
   font: 400 13px/1 var(--font-display), sans-serif;
-  color: #5F6466;
+  color: var(--fg-muted);
 }
-.cos-footer__legal a { color: inherit; text-decoration: underline; text-decoration-color: #B8B9B5; }
-.cos-footer__legal a:hover { color: #111111; text-decoration-color: #111111; }
+.cos-footer__legal a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule-dimension); }
+.cos-footer__legal a:hover { color: var(--fg); text-decoration-color: var(--fg); }
