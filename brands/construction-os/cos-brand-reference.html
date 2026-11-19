@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Construction OS Brand System</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../../tokens.css">
   <style>
-    /* Pinned to Paper — swatches require a fixed ground */
+    /* Pinned to white — swatches require a fixed ground. Colors come from ../../tokens.css. */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:       #111111;
-      --paper:     #FFFFFF;
-      --bond:      #EFEFEB;
-      --steel:     #476776;
-      --revision:  #C43230;
-      --graphite:  #5F6466;
-      --line:      #B8B9B5;
+      --ink:       var(--c-ink);
+      --paper:     var(--c-white);
+      --bond:      var(--c-bond);
+      --graphite:  var(--c-graphite);
+      --line:      var(--c-line);
 
       --f-display: 'Archivo', Helvetica, sans-serif;
       --pad: clamp(24px, 5vw, 72px);
@@ -45,10 +44,9 @@
       margin-top: 36px;
     }
     .section-label {
-      font: 600 10px/1 var(--f-display);
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--steel);
+      font: 600 11px/1 var(--f-display);
+      letter-spacing: .06em;
+      color: var(--graphite);
       padding-bottom: 20px;
     }
 
@@ -88,56 +86,39 @@
     /* ── PALETTE ────────────────────────────────────────── */
     .palette-grid {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 0;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px 0;
     }
     @media (max-width: 700px) {
-      .palette-grid { grid-template-columns: repeat(4, 1fr); }
+      .palette-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    .swatch { display: flex; flex-direction: column; }
-    .swatch-color { height: 80px; border: 1px solid rgba(0,0,0,.08); }
+    .swatch { display: flex; flex-direction: column; padding-right: 12px; }
+    .swatch-color { height: 64px; border: 1px solid var(--line); }
     .swatch-info { padding: 10px 0 0; }
-    .swatch-name { font: 600 12px/1 var(--f-display); color: var(--ink); letter-spacing: -.005em; }
-    .swatch-hex  { font: 400 11px/1 ui-monospace, monospace; color: var(--graphite); letter-spacing: .03em; margin-top: 3px; }
-    .swatch-token { font: 400 10px/1 ui-monospace, monospace; color: var(--line); letter-spacing: .02em; margin-top: 3px; }
+    .swatch-name  { font: 600 12px/1 var(--f-display); color: var(--ink); letter-spacing: -.005em; }
+    .swatch-hex   { font: 400 11px/1 var(--f-display); font-variant-numeric: tabular-nums; color: var(--graphite); letter-spacing: .03em; margin-top: 4px; }
+    .swatch-token { font: 400 11px/1 var(--f-display); color: var(--graphite); letter-spacing: .02em; margin-top: 4px; }
     .swatch-role  { font: 400 11px/1.4 var(--f-display); color: var(--graphite); margin-top: 6px; }
 
-    /* ── SURFACE RULE ───────────────────────────────────── */
+    /* ── SURFACES — each panel is a tokens.css surface class ── */
     .surfaces {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(5, 1fr);
       gap: 0 1px;
       background: var(--line);
-      margin-top: 24px;
+      margin-top: 32px;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
       .surfaces { grid-template-columns: 1fr; gap: 1px 0; }
     }
     .surface-panel { padding: 20px 22px 22px; }
-    .surface-panel--paper { background: var(--paper); }
-    .surface-panel--bond  { background: var(--bond); }
-    .surface-panel--ink   { background: var(--ink); }
-
-    .surface-label {
-      font: 600 10px/1 var(--f-display);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .surface-panel--paper .surface-label,
-    .surface-panel--bond  .surface-label { color: var(--steel); }
-    .surface-panel--ink   .surface-label { color: var(--line); }
-
-    .surface-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-top: 1px solid; }
-    .surface-panel--paper .surface-row,
-    .surface-panel--bond  .surface-row  { border-color: var(--line); }
-    .surface-panel--ink   .surface-row  { border-color: var(--graphite); }
-
-    .surface-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-    .surface-desc { font: 400 11px/1 var(--f-display); }
-    .surface-panel--paper .surface-desc,
-    .surface-panel--bond  .surface-desc { color: var(--graphite); }
-    .surface-panel--ink   .surface-desc { color: var(--line); }
+    .surface-label { font: 600 12px/1 var(--f-display); color: var(--fg); margin-bottom: 14px; }
+    .surface-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--rule-dimension); }
+    .surface-dot { width: 10px; height: 10px; flex: none; border: 1px solid var(--rule-dimension); }
+    .surface-desc { font: 400 11px/1.3 var(--f-display); font-variant-numeric: tabular-nums; color: var(--fg-muted); }
+    .surface-desc strong { font-weight: 500; color: var(--fg); }
+    .surface-btn { display: inline-block; margin-top: 14px; padding: 9px 14px; border-radius: 2px; font: 500 12px/1 var(--f-display);
+                   background: var(--btn-bg); color: var(--btn-fg); border: 1.5px solid var(--btn-border); }
 
     /* ── TYPOGRAPHY ─────────────────────────────────────── */
     .type-row {
@@ -150,7 +131,7 @@
     }
     .type-row:last-child { border-bottom: 1px solid var(--line); }
     .type-meta { display: flex; flex-direction: column; gap: 3px; }
-    .type-role { font: 500 11px/1 var(--f-display); color: var(--graphite); letter-spacing: .06em; text-transform: uppercase; }
+    .type-role { font: 500 11px/1 var(--f-display); color: var(--graphite); letter-spacing: .06em; }
     .type-spec { font: 400 10px/1.4 ui-monospace, monospace; color: var(--line); letter-spacing: .02em; }
     .type-sample { min-width: 0; }
 
@@ -159,31 +140,32 @@
     .ts-subhead { font: 500 18px/1.35 var(--f-display); letter-spacing: -.01em;  color: var(--ink); }
     .ts-body    { font: 400 16px/1.62 var(--f-display); color: var(--graphite); }
     .ts-small   { font: 400 14px/1.5  var(--f-display); color: var(--graphite); }
-    .ts-label   { font: 600 11px/1    var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--steel); }
     .ts-mono    { font: 400 12px/1    ui-monospace, 'Cascadia Code', monospace; letter-spacing: .04em; color: var(--graphite); }
-    .ts-fig     { font: 600 38px/1    var(--f-display); letter-spacing: -.035em; color: var(--revision); }
+    .ts-fig     { font: 600 38px/1    var(--f-display); letter-spacing: -.035em; color: var(--change); }
 
-    /* ── ICONS ──────────────────────────────────────────── */
-    .icons-grid {
+    /* ── MARK AND GLYPHS — light and dark rows (BRAND.md §2, §4) ── */
+    .glyph-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
-      gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+      gap: 0 1px;
       background: var(--line);
     }
-    .icon-cell {
-      background: var(--paper);
+    .glyph-row + .glyph-row { margin-top: 1px; }
+    .glyph-cell {
+      background: var(--surface);
       padding: 28px 24px 24px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 14px;
+      color: var(--fg);
     }
-    .icon-cell--ink { background: var(--ink); }
-    .icon-cell svg { flex: none; }
-    .icon-name { font: 600 12px/1.3 var(--f-display); color: var(--ink); letter-spacing: -.005em; }
-    .icon-cell--ink .icon-name { color: var(--paper); }
-    .icon-product { font: 400 11px/1 ui-monospace, monospace; color: var(--graphite); letter-spacing: .04em; margin-top: 2px; }
-    .icon-cell--ink .icon-product { color: var(--line); }
+    /* Light rows: primary ink, secondary graphite, delta --c-mark. Dark rows: white, white, --c-mark-lift. */
+    .glyph-row.surface--white { --glyph-p: var(--c-ink);   --glyph-s: var(--c-graphite); --glyph-delta: var(--c-mark); }
+    .glyph-row.surface--ink   { --glyph-p: var(--c-white); --glyph-s: var(--c-white);    --glyph-delta: var(--c-mark-lift); }
+    .glyph-cell svg { flex: none; display: block; }
+    .glyph-name { font: 600 12px/1.3 var(--f-display); color: var(--fg); letter-spacing: -.005em; }
+    .glyph-file { font: 400 11px/1.3 var(--f-display); color: var(--fg-muted); letter-spacing: .02em; margin-top: 3px; }
 
     /* ── SPACING ────────────────────────────────────────── */
     .spacing-grid {
@@ -230,10 +212,9 @@
       margin-top: 24px;
     }
     .prompt-label {
-      font: 600 10px/1 var(--f-display);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--steel);
+      font: 600 11px/1 var(--f-display);
+      letter-spacing: .06em;
+      color: var(--graphite);
       margin-bottom: 10px;
     }
     .prompt-text {
@@ -252,10 +233,11 @@
     <div>
       <div class="brand-row">
         <div class="brand-mark">
-          <svg viewBox="0 0 100 100" width="36" height="36" fill="none" role="img" aria-label="Construction OS">
-            <polyline points="16,54 16,16 54,16" fill="none" stroke="#111111" stroke-width="7"/>
-            <polyline points="84,46 84,84 46,84" fill="none" stroke="#111111" stroke-width="7"/>
-            <rect x="32" y="32" width="36" height="36" fill="#C43230" stroke="#476776" stroke-width="4"/>
+          <!-- svg/cos-mark.svg, verbatim -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" role="img" aria-label="Construction OS">
+            <polyline points="16,54 16,16 54,16" style="fill:none;stroke:currentColor" stroke-width="11"/>
+            <polyline points="84,46 84,84 46,84" style="fill:none;stroke:currentColor" stroke-width="11"/>
+            <rect x="34" y="34" width="32" height="32" style="fill:var(--c-mark, #692524)"/>
           </svg>
         </div>
         <div>
@@ -266,132 +248,171 @@
     </div>
     <div class="header-meta">
       Archivo 600 / 500 / 400<br>
-      Seven palette tokens<br>
+      Palette from tokens.css<br>
       Drawing-set linework
     </div>
   </header>
 
-  <!-- PALETTE -->
+  <!-- PALETTE — BRAND_SYSTEM.md §2.1; values read from tokens.css -->
   <section class="section">
-    <div class="section-label">Palette — seven tokens</div>
+    <div class="section-label">Palette — tokens.css, BRAND_SYSTEM.md §2.1</div>
     <div class="palette-grid">
       <div class="swatch">
-        <div class="swatch-color" style="background:#111111"></div>
+        <div class="swatch-color" style="background:var(--c-ink)"></div>
         <div class="swatch-info">
           <div class="swatch-name">Ink</div>
-          <div class="swatch-hex">#111111</div>
-          <div class="swatch-token">--cos-ink</div>
-          <div class="swatch-role">Primary text · figures · primary buttons</div>
+          <div class="swatch-hex" data-token="--c-ink"></div>
+          <div class="swatch-token">--c-ink</div>
+          <div class="swatch-role">Warm black. Primary text on light; dark surface</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#FFFFFF"></div>
+        <div class="swatch-color" style="background:var(--c-white)"></div>
         <div class="swatch-info">
-          <div class="swatch-name">Paper</div>
-          <div class="swatch-hex">#FFFFFF</div>
-          <div class="swatch-token">--cos-paper</div>
-          <div class="swatch-role">Default surface · product blocks</div>
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex" data-token="--c-white"></div>
+          <div class="swatch-token">--c-white</div>
+          <div class="swatch-role">Default surface; primary text on dark</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#EFEFEB"></div>
+        <div class="swatch-color" style="background:var(--c-bond)"></div>
         <div class="swatch-info">
           <div class="swatch-name">Bond</div>
-          <div class="swatch-hex">#EFEFEB</div>
-          <div class="swatch-token">--cos-bond</div>
-          <div class="swatch-role">Document / section surface</div>
+          <div class="swatch-hex" data-token="--c-bond"></div>
+          <div class="swatch-token">--c-bond</div>
+          <div class="swatch-role">Warm ivory. Document surface</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#476776"></div>
+        <div class="swatch-color" style="background:var(--c-navy)"></div>
         <div class="swatch-info">
-          <div class="swatch-name">Steel</div>
-          <div class="swatch-hex">#476776</div>
-          <div class="swatch-token">--cos-steel</div>
-          <div class="swatch-role">Eyebrows · category labels · icon accents</div>
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-hex" data-token="--c-navy"></div>
+          <div class="swatch-token">--c-navy</div>
+          <div class="swatch-role">Dark surface</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#C43230"></div>
+        <div class="swatch-color" style="background:var(--c-oxblood)"></div>
         <div class="swatch-info">
-          <div class="swatch-name">Revision</div>
-          <div class="swatch-hex">#C43230</div>
-          <div class="swatch-token">--cos-revision</div>
-          <div class="swatch-role">Measured changes only · never accent</div>
+          <div class="swatch-name">Oxblood</div>
+          <div class="swatch-hex" data-token="--c-oxblood"></div>
+          <div class="swatch-token">--c-oxblood</div>
+          <div class="swatch-role">Change mark on light (11.11:1 white, 9.83:1 ivory); closing-plate ground</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#5F6466"></div>
+        <div class="swatch-color" style="background:var(--c-graphite)"></div>
         <div class="swatch-info">
           <div class="swatch-name">Graphite</div>
-          <div class="swatch-hex">#5F6466</div>
-          <div class="swatch-token">--cos-graphite</div>
-          <div class="swatch-role">Secondary text · body copy on Paper</div>
+          <div class="swatch-hex" data-token="--c-graphite"></div>
+          <div class="swatch-token">--c-graphite</div>
+          <div class="swatch-role">Muted text on light (11.42:1 on white)</div>
         </div>
       </div>
       <div class="swatch">
-        <div class="swatch-color" style="background:#B8B9B5"></div>
+        <div class="swatch-color" style="background:var(--c-line)"></div>
         <div class="swatch-info">
           <div class="swatch-name">Line</div>
-          <div class="swatch-hex">#B8B9B5</div>
-          <div class="swatch-token">--cos-line</div>
-          <div class="swatch-role">Hairlines on Paper · text on Ink</div>
+          <div class="swatch-hex" data-token="--c-line"></div>
+          <div class="swatch-token">--c-line</div>
+          <div class="swatch-role">Rules, all surfaces</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--c-brass)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brass</div>
+          <div class="swatch-hex" data-token="--c-brass"></div>
+          <div class="swatch-token">--c-brass</div>
+          <div class="swatch-role">Dark surfaces only (6.02:1 ink, 5.14:1 navy)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--c-muted-dark)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted dark</div>
+          <div class="swatch-hex" data-token="--c-muted-dark"></div>
+          <div class="swatch-token">--c-muted-dark</div>
+          <div class="swatch-role">Muted text on dark (7.47:1 ink, 6.38:1 navy, 4.80:1 oxblood)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--c-change-lift)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Change lift</div>
+          <div class="swatch-hex" data-token="--c-change-lift"></div>
+          <div class="swatch-token">--c-change-lift</div>
+          <div class="swatch-role">Change mark on dark (5.49:1 ink, 4.69:1 navy)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--c-mark)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Mark</div>
+          <div class="swatch-hex" data-token="--c-mark"></div>
+          <div class="swatch-token">--c-mark</div>
+          <div class="swatch-role">Mark plate and glyph delta on light. Fixed; does not follow --change</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--c-mark-lift)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Mark lift</div>
+          <div class="swatch-hex" data-token="--c-mark-lift"></div>
+          <div class="swatch-token">--c-mark-lift</div>
+          <div class="swatch-role">Glyph delta on dark</div>
         </div>
       </div>
     </div>
 
-    <!-- Surface pairing rule -->
+    <!-- Surfaces — BRAND_SYSTEM.md §2.3. Each panel uses the tokens.css surface class. -->
     <div class="surfaces">
-      <div class="surface-panel surface-panel--paper">
-        <div class="surface-label">Paper / Bond surface</div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#111111"></div>
-          <span class="surface-desc">Ink — primary text</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#5F6466"></div>
-          <span class="surface-desc">Graphite — secondary text (5.4:1)</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#B8B9B5"></div>
-          <span class="surface-desc">Line gray — hairlines only</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#476776"></div>
-          <span class="surface-desc">Steel — eyebrows · icon accent</span>
-        </div>
+      <div class="surface-panel surface--white">
+        <div class="surface-label">White</div>
+        <div class="surface-row"><span class="surface-desc">Default</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg)"></div><span class="surface-desc"><strong>--fg</strong> ink</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg-muted)"></div><span class="surface-desc"><strong>--fg-muted</strong> graphite (11.42:1)</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--rule-object)"></div><span class="surface-desc"><strong>--rule-object</strong></span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--change)"></div><span class="surface-desc"><strong>--change</strong> oxblood (11.11:1)</span></div>
+        <span class="surface-btn">Button</span>
       </div>
-      <div class="surface-panel surface-panel--ink">
-        <div class="surface-label">Ink surface</div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#FFFFFF"></div>
-          <span class="surface-desc">Paper — primary text</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#B8B9B5"></div>
-          <span class="surface-desc">Line gray — secondary text (8:1)</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#5F6466"></div>
-          <span class="surface-desc">Graphite — hairlines only</span>
-        </div>
-        <div class="surface-row">
-          <div class="surface-dot" style="background:#476776"></div>
-          <span class="surface-desc">Steel — icon accent</span>
-        </div>
+      <div class="surface-panel surface--bond">
+        <div class="surface-label">Bond</div>
+        <div class="surface-row"><span class="surface-desc">Document zones</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg)"></div><span class="surface-desc"><strong>--fg</strong> ink</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg-muted)"></div><span class="surface-desc"><strong>--fg-muted</strong> graphite</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--rule-object)"></div><span class="surface-desc"><strong>--rule-object</strong></span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--change)"></div><span class="surface-desc"><strong>--change</strong> oxblood (9.83:1)</span></div>
+        <span class="surface-btn">Button</span>
       </div>
-      <div class="surface-panel surface-panel--bond">
-        <div class="surface-label">Swap rule</div>
-        <div class="surface-row" style="border-color: var(--line);">
-          <span class="surface-desc" style="font-size:12px; line-height:1.5; color:#5F6466;">
-            Graphite and Line gray swap roles across surfaces. Line gray text on Bond = 1.7:1 — fails. Graphite text on Ink = 3.1:1 — fails. The swap is a paired constraint, not a preference.
-          </span>
-        </div>
-        <div class="surface-row" style="border-color: var(--line); margin-top:8px;">
-          <span class="surface-desc" style="font-size:12px; line-height:1.5; color:#5F6466;">
-            Revision red marks a delta only. If nothing is changing, red does not appear.
-          </span>
-        </div>
+      <div class="surface-panel surface--ink">
+        <div class="surface-label">Ink</div>
+        <div class="surface-row"><span class="surface-desc">Weight; evidence band</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg)"></div><span class="surface-desc"><strong>--fg</strong> white</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg-muted)"></div><span class="surface-desc"><strong>--fg-muted</strong> muted-dark (7.47:1)</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--rule-object)"></div><span class="surface-desc"><strong>--rule-object</strong></span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--change)"></div><span class="surface-desc"><strong>--change</strong> change-lift (5.49:1)</span></div>
+        <span class="surface-btn">Button</span>
+      </div>
+      <div class="surface-panel surface--navy">
+        <div class="surface-label">Navy</div>
+        <div class="surface-row"><span class="surface-desc">Weight; evidence band</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg)"></div><span class="surface-desc"><strong>--fg</strong> white</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg-muted)"></div><span class="surface-desc"><strong>--fg-muted</strong> muted-dark (6.38:1)</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--rule-object)"></div><span class="surface-desc"><strong>--rule-object</strong></span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--change)"></div><span class="surface-desc"><strong>--change</strong> change-lift (4.69:1)</span></div>
+        <span class="surface-btn">Button</span>
+      </div>
+      <div class="surface-panel surface--oxblood">
+        <div class="surface-label">Oxblood</div>
+        <div class="surface-row"><span class="surface-desc">Closing plate only</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg)"></div><span class="surface-desc"><strong>--fg</strong> white</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--fg-muted)"></div><span class="surface-desc"><strong>--fg-muted</strong> muted-dark (4.80:1)</span></div>
+        <div class="surface-row"><div class="surface-dot" style="background:var(--rule-object)"></div><span class="surface-desc"><strong>--rule-object</strong></span></div>
+        <div class="surface-row"><div class="surface-dot"></div><span class="surface-desc"><strong>--change</strong> transparent. No change mark on a red ground</span></div>
+        <span class="surface-btn">Button</span>
       </div>
     </div>
   </section>
@@ -436,13 +457,6 @@
     </div>
     <div class="type-row">
       <div class="type-meta">
-        <div class="type-role">Eyebrow / label</div>
-        <div class="type-spec">600 · 11px · .16em · UPPERCASE · Steel</div>
-      </div>
-      <div class="type-sample"><span class="ts-label">Documents &nbsp;·&nbsp; How It Works &nbsp;·&nbsp; Coverage</span></div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
         <div class="type-role">Mono / index</div>
         <div class="type-spec">ui-monospace · 12px · .04em · Graphite</div>
       </div>
@@ -451,101 +465,183 @@
     <div class="type-row">
       <div class="type-meta">
         <div class="type-role">Stat figure</div>
-        <div class="type-spec">600 · 38px · -.035em · lh 1 · Revision red</div>
+        <div class="type-spec">600 · 38px · -.035em · lh 1 · --change</div>
       </div>
       <div class="type-sample"><span class="ts-fig">~30 min</span></div>
     </div>
   </section>
 
-  <!-- ICONS -->
+  <!-- MARK — brands/construction-os/BRAND.md §2. The files in svg/, inlined verbatim so the dark row can set colors. -->
   <section class="section">
-    <div class="section-label">Mark &amp; product icons — stroke only, viewBox 0 0 100 100</div>
-    <div class="icons-grid">
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <polyline points="16,54 16,16 54,16" stroke="#111111" stroke-width="7"/>
-          <polyline points="84,46 84,84 46,84" stroke="#111111" stroke-width="7"/>
-          <rect x="32" y="32" width="36" height="36" fill="#C43230" stroke="#476776" stroke-width="4"/>
+    <div class="section-label">Mark — BRAND.md §2</div>
+    <div class="glyph-row surface--white">
+      <div class="glyph-cell">
+        <!-- svg/cos-mark.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" role="img" aria-label="Construction OS">
+          <polyline points="16,54 16,16 54,16" style="fill:none;stroke:currentColor" stroke-width="11"/>
+          <polyline points="84,46 84,84 46,84" style="fill:none;stroke:currentColor" stroke-width="11"/>
+          <rect x="34" y="34" width="32" height="32" style="fill:var(--c-mark, #692524)"/>
         </svg>
         <div>
-          <div class="icon-name">Construction OS mark</div>
-          <div class="icon-product">Paper surface · Ink strokes · Steel accent</div>
+          <div class="glyph-name">Mark</div>
+          <div class="glyph-file">svg/cos-mark.svg · 22px</div>
         </div>
       </div>
-      <div class="icon-cell icon-cell--ink">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <polyline points="16,54 16,16 54,16" stroke="#FFFFFF" stroke-width="7"/>
-          <polyline points="84,46 84,84 46,84" stroke="#FFFFFF" stroke-width="7"/>
-          <rect x="32" y="32" width="36" height="36" fill="#C43230" stroke="#B8B9B5" stroke-width="4"/>
+      <div class="glyph-cell">
+        <!-- svg/cos-mark-sm.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="16" height="16" role="img" aria-label="Construction OS">
+          <polyline points="12,58 12,12 58,12" style="fill:none;stroke:currentColor" stroke-width="16"/>
+          <polyline points="88,42 88,88 42,88" style="fill:none;stroke:currentColor" stroke-width="16"/>
         </svg>
         <div>
-          <div class="icon-name">Construction OS mark</div>
-          <div class="icon-product">Ink surface · Paper strokes · Line accent</div>
-        </div>
-      </div>
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <polyline points="30,14 86,14 86,72" stroke="#C43230" stroke-width="4"/>
-          <rect x="14" y="26" width="52" height="60" stroke="#111111" stroke-width="8"/>
-        </svg>
-        <div>
-          <div class="icon-name">Less paperwork</div>
-          <div class="icon-product">Document Workbench</div>
-        </div>
-      </div>
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <line x1="6" y1="50" x2="96" y2="50" stroke="#C43230" stroke-width="4"/>
-          <polyline points="8,20 40,20 54,42 94,42" fill="none" stroke="#111111" stroke-width="8"/>
-          <polyline points="8,80 40,80 54,58 94,58" fill="none" stroke="#111111" stroke-width="8"/>
-        </svg>
-        <div>
-          <div class="icon-name">Fewer bottlenecks</div>
-          <div class="icon-product">Construction Intelligence</div>
-        </div>
-      </div>
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <rect x="6" y="18" width="88" height="64" stroke="#476776" stroke-width="4"/>
-          <line x1="18" y1="70" x2="82" y2="70" stroke="#111111" stroke-width="8"/>
-          <line x1="30" y1="70" x2="30" y2="56" stroke="#111111" stroke-width="8"/>
-          <line x1="50" y1="70" x2="50" y2="44" stroke="#111111" stroke-width="8"/>
-          <line x1="70" y1="70" x2="70" y2="32" stroke="#C43230" stroke-width="8"/>
-        </svg>
-        <div>
-          <div class="icon-name">Better visibility</div>
-          <div class="icon-product">Project Intelligence</div>
-        </div>
-      </div>
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <line x1="14" y1="28" x2="34" y2="28" stroke="#111111" stroke-width="8"/>
-          <line x1="42" y1="28" x2="62" y2="28" stroke="#111111" stroke-width="8"/>
-          <line x1="70" y1="28" x2="90" y2="28" stroke="#111111" stroke-width="8"/>
-          <line x1="24" y1="34" x2="24" y2="66" stroke="#476776" stroke-width="4"/>
-          <line x1="52" y1="34" x2="52" y2="66" stroke="#476776" stroke-width="4"/>
-          <line x1="80" y1="34" x2="80" y2="66" stroke="#476776" stroke-width="4"/>
-          <line x1="14" y1="74" x2="90" y2="74" stroke="#C43230" stroke-width="8"/>
-        </svg>
-        <div>
-          <div class="icon-name">Less repetitive work</div>
-          <div class="icon-product">Operations Automation</div>
-        </div>
-      </div>
-      <div class="icon-cell">
-        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
-          <rect x="8" y="8" width="56" height="56" stroke="#111111" stroke-width="10"/>
-          <rect x="52" y="52" width="40" height="40" stroke="#476776" stroke-width="7"/>
-        </svg>
-        <div>
-          <div class="icon-name">Purpose-built systems</div>
-          <div class="icon-product">Purpose-Built Systems</div>
+          <div class="glyph-name">Mark, small and single color</div>
+          <div class="glyph-file">svg/cos-mark-sm.svg · 16px</div>
         </div>
       </div>
     </div>
-    <div style="margin-top:12px; font: 400 11px/1.5 ui-monospace, monospace; color: var(--graphite); letter-spacing:.02em;">
-      All icons: <code style="background:var(--bond);padding:1px 4px;">fill="none"</code> on &lt;svg&gt;. Stroke widths 4–10 are calibrated to the 100-unit box — do not override to 1–2px. Recolor by stroke only. Never apply fills.
+    <div class="glyph-row surface--ink">
+      <div class="glyph-cell">
+        <!-- svg/cos-mark.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" role="img" aria-label="Construction OS">
+          <polyline points="16,54 16,16 54,16" style="fill:none;stroke:currentColor" stroke-width="11"/>
+          <polyline points="84,46 84,84 46,84" style="fill:none;stroke:currentColor" stroke-width="11"/>
+          <rect x="34" y="34" width="32" height="32" style="fill:var(--c-mark, #692524)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Mark</div>
+          <div class="glyph-file">svg/cos-mark.svg · 22px</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/cos-mark-sm.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="16" height="16" role="img" aria-label="Construction OS">
+          <polyline points="12,58 12,12 58,12" style="fill:none;stroke:currentColor" stroke-width="16"/>
+          <polyline points="88,42 88,88 42,88" style="fill:none;stroke:currentColor" stroke-width="16"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Mark, small and single color</div>
+          <div class="glyph-file">svg/cos-mark-sm.svg · 16px</div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- GLYPHS — BRAND.md §4 -->
+  <section class="section">
+    <div class="section-label">Product glyphs — BRAND.md §4</div>
+    <div class="glyph-row surface--white">
+      <div class="glyph-cell">
+        <!-- svg/glyph-document-workbench.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Document Workbench">
+          <polyline points="30,14 86,14 86,72" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <rect x="14" y="26" width="52" height="60" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Document Workbench</div>
+          <div class="glyph-file">svg/glyph-document-workbench.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-construction-intelligence.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Construction Intelligence">
+          <line x1="6" y1="50" x2="96" y2="50" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <polyline points="8,20 40,20 54,42 94,42" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <polyline points="8,80 40,80 54,58 94,58" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Construction Intelligence</div>
+          <div class="glyph-file">svg/glyph-construction-intelligence.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-project-intelligence.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Project Intelligence">
+          <rect x="6" y="18" width="88" height="64" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="18" y1="70" x2="82" y2="70" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="30" y1="70" x2="30" y2="56" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="50" y1="70" x2="50" y2="44" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="70" y1="70" x2="70" y2="32" stroke-width="9" style="fill:none;stroke:var(--glyph-delta, #692524)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Project Intelligence</div>
+          <div class="glyph-file">svg/glyph-project-intelligence.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-operations-automation.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Operations Automation">
+          <line x1="14" y1="28" x2="34" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="42" y1="28" x2="62" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="70" y1="28" x2="90" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="24" y1="34" x2="24" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="52" y1="34" x2="52" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="80" y1="34" x2="80" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="14" y1="74" x2="90" y2="74" stroke-width="9" style="fill:none;stroke:var(--glyph-delta, #692524)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Operations Automation</div>
+          <div class="glyph-file">svg/glyph-operations-automation.svg</div>
+        </div>
+      </div>
+    </div>
+    <div class="glyph-row surface--ink">
+      <div class="glyph-cell">
+        <!-- svg/glyph-document-workbench.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Document Workbench">
+          <polyline points="30,14 86,14 86,72" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <rect x="14" y="26" width="52" height="60" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Document Workbench</div>
+          <div class="glyph-file">svg/glyph-document-workbench.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-construction-intelligence.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Construction Intelligence">
+          <line x1="6" y1="50" x2="96" y2="50" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <polyline points="8,20 40,20 54,42 94,42" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <polyline points="8,80 40,80 54,58 94,58" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Construction Intelligence</div>
+          <div class="glyph-file">svg/glyph-construction-intelligence.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-project-intelligence.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Project Intelligence">
+          <rect x="6" y="18" width="88" height="64" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="18" y1="70" x2="82" y2="70" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="30" y1="70" x2="30" y2="56" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="50" y1="70" x2="50" y2="44" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="70" y1="70" x2="70" y2="32" stroke-width="9" style="fill:none;stroke:var(--glyph-delta, #692524)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Project Intelligence</div>
+          <div class="glyph-file">svg/glyph-project-intelligence.svg</div>
+        </div>
+      </div>
+      <div class="glyph-cell">
+        <!-- svg/glyph-operations-automation.svg, verbatim -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" role="img" aria-label="Operations Automation">
+          <line x1="14" y1="28" x2="34" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="42" y1="28" x2="62" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="70" y1="28" x2="90" y2="28" stroke-width="9" style="fill:none;stroke:var(--glyph-p, currentColor)"/>
+          <line x1="24" y1="34" x2="24" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="52" y1="34" x2="52" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="80" y1="34" x2="80" y2="66" stroke-width="5" style="fill:none;stroke:var(--glyph-s, #413833)"/>
+          <line x1="14" y1="74" x2="90" y2="74" stroke-width="9" style="fill:none;stroke:var(--glyph-delta, #692524)"/>
+        </svg>
+        <div>
+          <div class="glyph-name">Operations Automation</div>
+          <div class="glyph-file">svg/glyph-operations-automation.svg</div>
+        </div>
+      </div>
+    </div>
+    <p class="glyph-file" style="margin-top:12px; max-width:68ch">
+      Strokes read --glyph-p, --glyph-s and --glyph-delta; the plate reads --c-mark. Light rows: ink, graphite, --c-mark. Dark rows: white, white, --c-mark-lift. Stroke weights 9 and 5 on the 100-unit grid, drawn for 40px. Don't scale linearly.
+    </p>
   </section>
 
   <!-- SPACING -->
@@ -572,10 +668,10 @@
       <div class="rule-cell">
         <div class="rule-heading">Palette</div>
         <ul class="rule-list">
-          <li>Seven tokens only — no grays, blues, or purples outside this set</li>
-          <li>Revision <code>#C43230</code> marks a measured delta only — never accent, never background</li>
-          <li>Graphite / Line gray swap by surface (see pairing table above)</li>
-          <li>Line gray text on Bond = 1.7:1 — never do this</li>
+          <li>Components use role tokens only (--fg, --fg-muted, --surface, --rule-*, --change, --btn-*), never palette values</li>
+          <li>Oxblood is the change mark on light surfaces and the closing-plate ground. Never emphasis</li>
+          <li>Five surfaces: white, bond, ink, navy, oxblood. Brass on dark surfaces only</li>
+          <li>No change mark on oxblood; --change is transparent there</li>
         </ul>
       </div>
       <div class="rule-cell">
@@ -597,27 +693,37 @@
         </ul>
       </div>
       <div class="rule-cell">
-        <div class="rule-heading">Icons</div>
+        <div class="rule-heading">Mark and glyphs</div>
         <ul class="rule-list">
-          <li>Keep <code>viewBox="0 0 100 100"</code> — altering it clips the geometry</li>
-          <li>Stroke widths (4–12) are calibrated to the 100-unit box — do not override</li>
-          <li>On Ink surfaces: Paper strokes, Line gray accent</li>
-          <li>On Paper/Bond: Ink strokes, Steel accent</li>
+          <li>Use the files in svg/; don't redraw them</li>
+          <li>Four product glyphs only, a documented family. No icon set</li>
+          <li>Light rows: ink primary, graphite secondary, --c-mark delta</li>
+          <li>Dark rows: white primary and secondary, --c-mark-lift delta</li>
         </ul>
       </div>
     </div>
 
     <div class="prompt-block">
       <div class="prompt-label">Starter prompt — paste at the top of any new session</div>
-      <pre class="prompt-text">Read CONSTRUCTION-OS-BRAND-KIT.md and tokens.css before writing any CSS.
-Palette: Ink #111111 · Paper #FFFFFF · Bond #EFEFEB · Steel #476776 · Revision #C43230 · Graphite #5F6466 · Line #B8B9B5.
-Typeface: Archivo 600 / 500 / 400 only. No second typeface.
-No gradients, rounded containers, drop shadows, or fills on icons (stroke only).
-Rules span containers — never scope a section divider to a grid cell.
-Revision red marks a measured change only — never use it as an accent.</pre>
+      <pre class="prompt-text">Read BRAND_SYSTEM.md and brands/construction-os/BRAND.md before writing any CSS.
+Use role tokens from tokens.css (--fg, --fg-muted, --surface, --rule-*, --change, --btn-*). Never hard-code a color.
+Archivo for display, headings, labels and numerals; Source Serif 4 for body prose only.
+No gradients, shadows, rounded containers, pill badges, all-caps labels or monospace.
+Oxblood (--change) marks a change only, never emphasis. Buttons are ink.
+If a treatment isn't in BRAND_SYSTEM.md, add it there first. Don't invent it in page code.</pre>
     </div>
   </section>
 
 </div>
+<script>
+/* Fill each [data-token] with its value from tokens.css, so swatches can't drift from the tokens. */
+(function () {
+  var root = getComputedStyle(document.documentElement);
+  document.querySelectorAll('[data-token]').forEach(function (el) {
+    var v = root.getPropertyValue(el.getAttribute('data-token')).trim();
+    if (v) el.textContent = v.toUpperCase();
+  });
+})();
+</script>
 </body>
 </html>
