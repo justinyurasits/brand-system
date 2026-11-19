@@ -2,7 +2,7 @@
 
 **Sheet:** BRAND-002
 **Issued:** 2026-09-30
-**Revision:** 14
+**Revision:** 15
 **Supersedes:** BRAND-001 (specimen)
 
 This file is the authority on what this system looks like. It governs every site, app, PDF, Word document, deck, and carousel built on it. When a rule here conflicts with anything else, or with an existing stylesheet, this file wins.
@@ -192,6 +192,16 @@ An inline single-line variant exists for contexts too small for a grid (carousel
 
 CTAs, tables, and diagrams are not primitives. They are compositions built from tokens and the seven above. A CTA is a `Zone` with a heading and an ink button. Making them primitives is how a system grows to twenty components that each drift independently.
 
+**Interactive states.** Hover and focus change fill or line weight, never hue.
+
+- **Filled button:** on hover the fill goes transparent; the label and the 1.5px border take `--btn-border`. The border is present at rest so the button does not shift.
+- **Ghost button:** on hover it fills with `--btn-bg` and the label takes `--btn-fg`.
+- **Link:** the underline steps from object weight (1px) to cut weight (1.5px). A muted link (`--fg-muted`) also steps up to `--fg`.
+- **Focus:** a 2px `--fg` outline at 3px offset, on every interactive element.
+- Never a new color, never oxblood or `--change`, and no shadow, lift, scale, or slide.
+
+Reason: buttons are ink and nothing is oxblood for emphasis (§4), so a hover cannot borrow a color, and the palette has no hover value — adding one per surface would double the tokens. Inverting the fill and stepping the line weight use role tokens only, so they work unchanged on all five surfaces, and they are the drawing language: emphasis by lineweight (§5), not by hue. `brand.css` already implements this (`.btn:hover`, `.btn--ghost:hover`, `a:hover`, `:focus-visible`); this paragraph writes it down.
+
 ---
 
 ## 8. The dimension system
@@ -287,3 +297,4 @@ Claude Code may not introduce a visual treatment not defined here. If a page nee
 | 12 | 2026-10-02 | §10: `→` (right arrow) allowlisted in `.fig__sep` elements only. The §10 ban targets trailing link arrows (`Read more →`); a `→` used as a value separator between before/after measurement figures is not a link arrow. Rule 7 in `tools/verify.js` updated with `ARROW_HTML_CLASS_ALLOWLIST` and a checkFn that passes when the arrow is the text content of a `.fig__sep` element. §4 proof section redesigned: two-column head (H2 left, founder paragraph right, bottom-aligned), two to-scale dimension drawings (viewBox 480×64; before 0–480, contract after 30 units = 1/16, change-order after 144 units = 3/10), oxblood after lines and figures, warm-graphite before lines and figures. Caption "Measured across roughly twenty real jobs and bids." retained at `--fs-annotation`. |
 | 13 | 2026-11-19 | Corrections only, no visual change. Moved to the `brand-system` repo. §8 rule 7 and §10: retired steel and `--c-revision-lift` references (rev 08) replaced — dimension figures allowed on white, bond, ink and navy, never oxblood, matching §2.4. §9 dark-section limit corrected from two to three to match §2.4 (rev 09). §7 primitive count corrected to seven. §3, §6, §11: paths changed from website paths to this repo, with the register and content kept per project. |
 | 14 | 2026-11-19 | Split into base and sub-brand. Moved to `brands/construction-os/BRAND.md`: the mark, the four product glyphs (§10), the product wordmark names and setting (§3), and the `CASE`/`AOS`/`SOW`/`SPEC`/`FN` registers (§6). Base keeps the rules, generalised: §3 and §4 exceptions now apply to any sub-brand; §6 keeps the format and `BRAND`; §10 allows a sub-brand glyph family. Sub-brand rule added to the header. No token or visual change. |
+| 15 | 2026-11-19 | §7: interactive states added. Hover and focus change fill or line weight, never hue — filled buttons invert to outline, ghost buttons fill, link underlines step from object to cut weight, muted links step to `--fg`, focus is a 2px `--fg` outline. Records what `brand.css` already does; needed because `cos-header.css` hovered to the retired steel and no rule said what replaces it. No token change. |
