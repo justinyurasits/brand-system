@@ -2,7 +2,7 @@
 
 **Sheet:** BRAND-002
 **Issued:** 2026-09-30
-**Revision:** 12
+**Revision:** 13
 **Supersedes:** BRAND-001 (specimen)
 
 This file is the authority on what this brand looks like. It governs the website, PDFs, Word documents, decks, and carousels. When a rule here conflicts with anything else in this repository, or with an existing stylesheet, this file wins.
@@ -95,7 +95,7 @@ Both are free and embeddable, which is required: these tokens have to survive in
 
 Archivo is deliberately restrained. The personality of this brand comes from the drawing language, not the typeface. Do not substitute a more distinctive display face — that turns the identity into typography cosplay and it will fight the dimension system for attention.
 
-Eight steps, defined as CSS tokens in `brand-kit/tokens.css`. No page may declare a `font-size` value outside these tokens — every inline pixel value and every `cqi` unit is retired; all fluid type uses `vw` inside `clamp()`. For non-web renderers (§11), use each token's floor value as the static size.
+Eight steps, defined as CSS tokens in `tokens.css`. No page may declare a `font-size` value outside these tokens — every inline pixel value and every `cqi` unit is retired; all fluid type uses `vw` inside `clamp()`. For non-web renderers (§11), use each token's floor value as the static size.
 
 | Token | Role | Formula | Weight | LH | Tracking |
 |---|---|---|---|---|---|
@@ -167,7 +167,7 @@ Register prefixes:
 
 Format is `PREFIX-NNN`, revisions are `REV NN`, dates are ISO `YYYY-MM-DD`.
 
-**Numbers must be real.** A register that never increments is decoration, and an operator will identify it as decoration quickly. Maintain the register in `/content/register.json`. When a document is revised, the revision number increments and the issue date changes.
+**Numbers must be real.** A register that never increments is decoration, and an operator will identify it as decoration quickly. Each project that issues documents maintains its register as a data file (the website keeps it in `/content/register.json`). When a document is revised, the revision number increments and the issue date changes.
 
 ---
 
@@ -181,7 +181,7 @@ Seven. Pages are composed from these. Adding an eighth requires editing this fil
 
 An inline single-line variant exists for contexts too small for a grid (carousel footers, page footers). It separates fields with a spaced forward slash — `Construction OS / CASE-003 / 2026-09-04 / REV 01` — never a middle dot, and never a pipe.
 
-**`Dimension`** — measured evidence. See §8. White or bond surfaces only.
+**`Dimension`** — measured evidence. See §8, including the surfaces it may sit on (rule 7).
 
 **`Register`** — inline technical identifier. Renders a code, optionally with revision. Annotation styling.
 
@@ -191,7 +191,7 @@ An inline single-line variant exists for contexts too small for a grid (carousel
 
 **`SiteNav`** — the seventh, added because it appears on every page and would otherwise have to be invented in page code. Left mark in Archivo 500, right-side ink links, one ghost button. Bottom edge is a cut rule. Mobile collapses to a text toggle — no icon library, and no third-party JS framework for a single boolean.
 
-CTAs, tables, and diagrams are not primitives. They are compositions built from tokens and the six above. A CTA is a `Zone` with a heading and an ink button. Making them primitives is how a system grows to twenty components that each drift independently.
+CTAs, tables, and diagrams are not primitives. They are compositions built from tokens and the seven above. A CTA is a `Zone` with a heading and an ink button. Making them primitives is how a system grows to twenty components that each drift independently.
 
 ---
 
@@ -207,7 +207,7 @@ The signature element. A measured transformation is drawn as two dimensioned spa
 4. **Ticks, not arrowheads.** Spans terminate in 45-degree architectural ticks, drawn as lines. Never a Unicode arrow or an arrowhead marker.
 5. **The changed state is red; the original is annotation gray.** One red span per figure.
 6. **At most two dimension figures per page.** Beyond that it stops being evidence and becomes a motif.
-7. **White, bond, and ink surfaces only.** On ink, the changed span uses `--c-revision-lift` and the changed state must be readable by position and label, not color alone. Steel is prohibited — no revision red can meet minimum contrast against `#476776`.
+7. **White, bond, ink, and navy surfaces only.** On ink and navy, the changed span uses `--c-change-lift` and the changed state must be readable by position and label, not color alone. Never on oxblood — `--change` is `transparent` there, so the changed span would disappear (§2.4, §4).
 
 Applies equally to non-time measures: step counts, document counts, days to turnaround, headcount touchpoints.
 
@@ -221,7 +221,7 @@ The strongest tell of a generated page is not any single decoration. It is that 
 - **No two consecutive zones may share the same structure.** If one is a three-up grid, the next is prose, or a table, or a dimension figure, or an asymmetric split.
 - **No section may share a surface with the section directly above it.** See §2.4.
 - **At most one three-up grid per page.**
-- **At most two dark sections per page, never adjacent.** See §2.4.
+- **At most three dark sections per page, each with a distinct function, never adjacent.** See §2.4.
 - **At least one dark surface within the first two screens.** See §2.4.
 - **Spend boldness once.** One element per page is the memorable thing. Everything around it stays quiet.
 - **Asymmetry is the default for content splits** — a 7/5 or 8/4 column relationship rather than 6/6.
@@ -256,8 +256,7 @@ Each of these has a reason. A prohibition without a reason gets argued around.
 
   Colour: primary and secondary strokes take the row's foreground on dark rows; on light rows primary is warm black (`--c-ink`), secondary warm graphite (`--c-graphite`). The delta is `--c-mark` on light rows and `--c-mark-lift` on dark rows.
 - **Entrance animation on scroll** — fade-and-slide-up on every section is the generated default. Motion responds to a user action or does not exist.
-- **Steel as a text color, button, or icon** — steel is a surface. Its use outside a section background is prohibited.
-- **Dimension figures on steel** — revision-lift (#E2685E) reaches 1.84:1 on steel, below the 3:1 minimum for non-text. No revision red at usable luminance passes against `#476776`. Ink is permitted; see §8 rule 7.
+- **Dimension figures on oxblood** — the change mark is transparent on that ground, so the changed span cannot be read. Ink and navy are permitted; see §8 rule 7.
 
 ---
 
@@ -275,7 +274,7 @@ Colors via `RGBColor`. Rules are implemented as single-cell table borders with `
 Hex without the leading `#`. Line widths in points. Slide masters carry the title block as a footer element.
 
 **Web**
-Tokens as CSS custom properties in `brand-kit/tokens.css` (two-layer: palette then roles). Content — copy, metrics, case study data, the document register — lives in `/content` as data files, so changing `8 hrs` to `6 hrs` is a data edit, not a component edit.
+Tokens as CSS custom properties in `tokens.css` (two-layer: palette then roles). Content — copy, metrics, case study data, the document register — lives in each project's data files (the website uses `/content`), so changing `8 hrs` to `6 hrs` is a data edit, not a component edit.
 
 ---
 
@@ -299,3 +298,4 @@ Claude Code may not introduce a visual treatment not defined here. If a page nee
 | 10 | 2026-09-30 | §3 type: product wordmarks (the four product names in the §3 system section) may be set in Archivo 600, 13px, 0.1em tracking, uppercase — the only exception to sentence case. Status text under a wordmark is plain text, never a chip. §4: glyph delta strokes in the four product glyphs use `--c-mark`/`--c-mark-lift`, not `--change` — mark role and change role are separate tokens on separate semantic axes; §4 updated to document this. §10: four product glyphs documented as a constructed family from the mark's geometry (not an icon set); full construction notes added. §2.1: `--c-mark` and `--c-mark-lift` added to palette table. `--c-mark-lift` (#D07A6A, same value as `--c-change-lift`) added to `tokens.css`. |
 | 11 | 2026-10-01 | §3 type scale rebuilt as eight fluid tokens. `--fs-head` retired; replaced by `--fs-section` at `clamp(40px,5vw,60px)`. `--fs-display` ceiling lowered from 84px to 72px, rate from 6.2vw to 6vw. `--fs-subhead` raised from 18px to `clamp(28px,4.2vw,40px)`. `--fs-lead` added at `clamp(18px,2vw,26px)`. `--fs-figure` added at `clamp(48px,5vw,64px)`. Rule added: no page may declare a font-size outside these tokens. `cqi` units retired in favour of `vw`. `tokens.css` updated: `--lh-head`/`--tr-head` renamed to `--lh-section`/`--tr-section`; `--lh-subhead` updated from 1.35 to 1.1 (role now covers 28–40px); `--lh-lead` and `--lh-small` added. |
 | 12 | 2026-10-02 | §10: `→` (right arrow) allowlisted in `.fig__sep` elements only. The §10 ban targets trailing link arrows (`Read more →`); a `→` used as a value separator between before/after measurement figures is not a link arrow. Rule 7 in `tools/verify.js` updated with `ARROW_HTML_CLASS_ALLOWLIST` and a checkFn that passes when the arrow is the text content of a `.fig__sep` element. §4 proof section redesigned: two-column head (H2 left, founder paragraph right, bottom-aligned), two to-scale dimension drawings (viewBox 480×64; before 0–480, contract after 30 units = 1/16, change-order after 144 units = 3/10), oxblood after lines and figures, warm-graphite before lines and figures. Caption "Measured across roughly twenty real jobs and bids." retained at `--fs-annotation`. |
+| 13 | 2026-11-19 | Corrections only, no visual change. Moved to the `brand-system` repo. §8 rule 7 and §10: retired steel and `--c-revision-lift` references (rev 08) replaced — dimension figures allowed on white, bond, ink and navy, never oxblood, matching §2.4. §9 dark-section limit corrected from two to three to match §2.4 (rev 09). §7 primitive count corrected to seven. §3, §6, §11: paths changed from website paths to this repo, with the register and content kept per project. |
