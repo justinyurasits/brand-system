@@ -1,6 +1,6 @@
 # brand-system
 
-<!-- standard: design/_template/repo/CLAUDE.md v1.5
+<!-- standard: design/_template/repo/CLAUDE.md v1.7
      Sections 1–6 are the standard: copy them unchanged, filling in only the <angle brackets>.
      Section 7 is this repository's own. To change a standard rule here, say so under
      "Overrides" in section 7, with the reason. -->
@@ -36,6 +36,9 @@ Before proposing work, read in this order (skip any the project doesn't have yet
   approves it, make it in the Claude Doc (synced files) or in a pull request in `design`
   (repo-authored files), and build against it after it's merged. Never put a design
   change in this repository's pull request, and don't build ahead of the design.
+- **Working in `../design`.** Before changing anything there (a design pull request, a
+  sync or a roll-up), read `../design/CLAUDE.md` and follow it. It has the sync steps,
+  including `python tools/build_docs.py` and `python tools/validate.py`.
 - **When the design is silent, ask.** Don't improvise behavior, copy or scope.
 - **When the design and this repository disagree, say so.** Don't guess which is right.
 - A synced design file starts with a header naming its Claude Doc. If the two differ,
@@ -79,7 +82,9 @@ issue or milestone is done, and about every ten turns of work since you last ask
 - On yes: collect Decisions and Build notes from pull requests merged since the last
   roll-up (the latest "Roll-up:" line in the component's `build-log.md`). Propose
   decisions for the `design.md` decision log and findings for `build-log.md`, ending with
-  the line `Roll-up: <repo> #<first>–#<last>`. For files synced from Claude Docs, add
+  the line `Roll-up: <repo> #<first>–#<last>`. Also propose any lesson that generalizes
+  beyond this work for the project's `principles.md`, under the principle it serves or
+  flagged as a candidate new one. For files synced from Claude Docs, add
   them as suggestions in the Claude Doc if you have the Docs connector; otherwise give
   Justin the text to paste. For repo-authored files, open a pull request in `design`.
 - Every roll-up also checks for drift. For each synced file in the component and its
