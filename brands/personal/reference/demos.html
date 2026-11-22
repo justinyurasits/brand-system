@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demos &amp; Builds — Justin Yurasits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Justin Yurasits</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html" aria-current="page">Demos</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a href="work-with-me.html" class="btn btn-primary btn-sm">Work with me →</a>
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="demos.html" aria-current="page">Demos</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work-with-me.html" class="mobile-cta">Work with me →</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <div class="page-intro">
+    <div class="container">
+      <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Working Systems &amp; Experiments</p>
+      <h1>Demos &amp; Builds</h1>
+      <p class="lead">Working demonstrations, prototypes, and technical experiments. Each entry describes what it does, what you can actually view, Justin's specific contribution, its maturity, and its limitations. No invented benchmark metrics or speculative interfaces.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="demos-layout">
+
+      <!-- Filter chips -->
+      <div class="filter-row" role="group" aria-label="Filter demos by type" data-filter-group="demos">
+        <span class="filter-label" aria-hidden="true">Filter</span>
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="agents" aria-pressed="false">Agents</button>
+        <button type="button" class="chip" data-filter="workflow" aria-pressed="false">Workflow</button>
+        <button type="button" class="chip" data-filter="evaluation" aria-pressed="false">Evaluation</button>
+        <button type="button" class="chip" data-filter="construction" aria-pressed="false">Construction</button>
+        <p class="sr-only" aria-live="polite" data-filter-status></p>
+      </div>
+
+      <!-- Featured demo -->
+      <section aria-labelledby="cos-demo-heading" data-filter-item="demos" data-tags="construction agents">
+        <div class="demo-feature">
+          <div>
+            <div class="demo-badges">
+              <span class="badge badge-build">Active Build</span>
+              <span class="badge badge-request">Demo on Request</span>
+            </div>
+            <h2 class="demo-title" id="cos-demo-heading">Construction OS — Conversational Project Intelligence</h2>
+            <p class="demo-desc">An operational AI system that gives construction project teams conversational access to their project data — schedules, documents, RFIs, submittals, and field communication — through a unified AI interface. Agents can query the data layer, surface relevant information, and automate document workflows.</p>
+            <dl class="demo-dl">
+              <dt>What you can view</dt>
+              <dd>Architecture overview and system flow diagram (available here); live interface demo available on request.</dd>
+              <dt>Justin's role</dt>
+              <dd>Sole designer and builder — product, system architecture, and implementation.</dd>
+              <dt>Maturity</dt>
+              <dd>Core data layer and conversational interface operational. Document AI capabilities in progress.</dd>
+              <dt>Limitations</dt>
+              <dd>Not yet deployed to an active construction project. Capability maturity varies by feature area.</dd>
+            </dl>
+          </div>
+          <div class="demo-visual" role="img" aria-label="Construction OS architecture diagram — placeholder">
+            <svg width="200" height="60" viewBox="0 40 200 60" fill="none" aria-hidden="true" class="demo-visual-icon">
+              <!-- Simplified architecture flow -->
+              <rect x="2" y="55" width="58" height="30" rx="4" stroke="#54789A" stroke-width="1.5"/>
+              <text x="31" y="73" font-family="system-ui" font-size="8" fill="#54789A" text-anchor="middle">Project Data</text>
+              <path d="M60 70h6" stroke="#54789A" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <rect x="66" y="45" width="68" height="50" rx="4" stroke="#54789A" stroke-width="1.5" fill="#E6EDF3"/>
+              <text x="100" y="66" font-family="system-ui" font-size="8" fill="#112A42" text-anchor="middle" font-weight="600">AI Layer</text>
+              <text x="100" y="78" font-family="system-ui" font-size="7" fill="#3D4B59" text-anchor="middle">Context · Agents</text>
+              <text x="100" y="88" font-family="system-ui" font-size="7" fill="#3D4B59" text-anchor="middle">Routing · Tools</text>
+              <path d="M134 70h12" stroke="#54789A" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <rect x="146" y="55" width="44" height="30" rx="4" stroke="#54789A" stroke-width="1.5"/>
+              <text x="168" y="74" font-family="system-ui" font-size="8" fill="#54789A" text-anchor="middle">Interface</text>
+            </svg>
+            <span class="demo-visual-label">Architecture diagram — replace with verified diagram or screenshot</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- More demos -->
+      <section aria-labelledby="more-demos-heading" data-filter-section="demos">
+        <div class="section-header">
+          <h2 id="more-demos-heading">More builds and experiments</h2>
+        </div>
+        <div class="demos-grid">
+
+          <article class="demo-card" data-filter-item="demos" data-tags="evaluation">
+            <div class="demo-badges">
+              <span class="badge badge-proto">Prototype</span>
+              <span class="badge badge-tag">Evaluation</span>
+            </div>
+            <h3 class="demo-card-title">AI Evaluation Framework</h3>
+            <p class="demo-card-desc">A systematic framework for evaluating LLM outputs across a specific task type — testing consistency, grounding, and failure modes under varied inputs. Built to surface the difference between impressive demos and reliable production behavior.</p>
+            <dl class="demo-dl">
+              <dt>What you can view</dt>
+              <dd>Methodology overview and sample evaluation report (no live interface).</dd>
+              <dt>Maturity</dt>
+              <dd>Working prototype applied to one task domain.</dd>
+            </dl>
+            <a href="#" class="demo-card-link" aria-label="View AI Evaluation Framework (placeholder link)">View methodology →</a>
+          </article>
+
+          <article class="demo-card" data-filter-item="demos" data-tags="agents">
+            <div class="demo-badges">
+              <span class="badge badge-proto">Prototype</span>
+              <span class="badge badge-tag">Agents</span>
+            </div>
+            <h3 class="demo-card-title">Intent Routing System</h3>
+            <p class="demo-card-desc">A multi-intent classification and routing system for conversational interfaces. Tests the limits of intent-based routing versus more flexible approaches — and surfaces the tradeoffs between predictability and capability in agentic design.</p>
+            <dl class="demo-dl">
+              <dt>What you can view</dt>
+              <dd>Architecture diagram and routing logic overview.</dd>
+              <dt>Maturity</dt>
+              <dd>Functional prototype; not in production use.</dd>
+            </dl>
+            <a href="article.html" class="demo-card-link">Related writing: "The Goal Isn't Fewer AI Intents" →</a>
+          </article>
+
+          <article class="demo-card" data-filter-item="demos" data-tags="workflow construction">
+            <div class="demo-badges">
+              <span class="badge badge-proto">Prototype</span>
+              <span class="badge badge-tag">Workflow · Construction</span>
+            </div>
+            <h3 class="demo-card-title">Construction Document Analysis Pipeline</h3>
+            <p class="demo-card-desc">An automated pipeline for processing and extracting structured information from construction documents — RFIs, submittals, specs, and drawings. Designed around the actual information workflows of field and office teams.</p>
+            <dl class="demo-dl">
+              <dt>What you can view</dt>
+              <dd>Sample outputs and pipeline architecture (no live demo).</dd>
+              <dt>Maturity</dt>
+              <dd>Working prototype; document types vary in accuracy.</dd>
+            </dl>
+            <a href="#" class="demo-card-link" aria-label="View document analysis pipeline (placeholder)">View pipeline overview →</a>
+          </article>
+
+          <article class="demo-card" data-filter-item="demos" data-tags="agents workflow">
+            <div class="demo-badges">
+              <span class="badge badge-draft">Experiment</span>
+              <span class="badge badge-tag">Agents · Workflow</span>
+            </div>
+            <h3 class="demo-card-title">Agentic Workflow Orchestration</h3>
+            <p class="demo-card-desc">An exploration of multi-step agentic task execution — where a planning agent decomposes a goal, delegates to specialized subagents, and synthesizes results. Tests tool use, state management, and failure recovery patterns.</p>
+            <dl class="demo-dl">
+              <dt>What you can view</dt>
+              <dd>Trace logs and architecture notes (no live interface).</dd>
+              <dt>Maturity</dt>
+              <dd>Early experiment; architecture is exploratory.</dd>
+            </dl>
+            <a href="#" class="demo-card-link" aria-label="View workflow orchestration experiment (placeholder)">View experiment notes →</a>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="footer-brand" aria-label="Justin Yurasits — home">
+          <span class="footer-logo" aria-hidden="true">JY</span>
+          <span>
+            <strong>Justin Yurasits</strong>
+            <span>AI Product Leadership</span>
+          </span>
+        </a>
+      </div>
+      <nav class="footer-group footer-group-site" aria-labelledby="footer-site-heading">
+        <h2 class="footer-heading" id="footer-site-heading">Site</h2>
+        <ul class="footer-list footer-list-2col">
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html" aria-current="page">Demos</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work-with-me.html">Work with me</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-consulting-heading">
+        <h2 class="footer-heading" id="footer-consulting-heading">Consulting</h2>
+        <ul class="footer-list">
+          <li><a href="work-with-me.html#enterprise">Enterprise AI</a></li>
+          <li><a href="work-with-me.html#construction">Construction AI</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-contact-heading">
+        <h2 class="footer-heading" id="footer-contact-heading">Contact</h2>
+        <ul class="footer-list">
+          <li><a href="#" aria-label="LinkedIn (link placeholder)">LinkedIn</a></li>
+          <li><a href="#" aria-label="Email (address placeholder)">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
