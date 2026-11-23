@@ -117,8 +117,13 @@ issue or milestone is done, and about every ten turns of work since you last ask
     glyphs, registers). It can't override the base.
   - `brands/construction-os/`: Construction OS, with its header, footer, nav, reference
     page and `svg/`.
+  - `brands/personal/`: the independent personal sub-brand for justinyurasits.com
+    (BRAND-004): its `BRAND.md`, the approved `DESIGN_HANDOFF.md`, `tokens.css`, and the
+    prototype under `reference/` with `screenshots/`. `BRAND_SYSTEM.md` §1–§10 don't
+    apply to it.
 - **Run:** nothing to build. Open `components.html` and
-  `brands/construction-os/cos-brand-reference.html` in a browser.
+  `brands/construction-os/cos-brand-reference.html` in a browser, or
+  `brands/personal/reference/index.html` for the personal sub-brand.
 - **Checks:** none automated yet. Before a pull request:
   - No retired values outside change-control rows: `grep -rnE "C43230|476776|111111|revision-lift|steel" --include=*.md --include=*.css --include=*.svg --include=*.html .`
     Change-control rows will match; anything else is a failure. Files that fail today
@@ -130,7 +135,9 @@ issue or milestone is done, and about every ten turns of work since you last ask
   - Change order: add the rule to the right file with its reasoning, increment its
     revision, then change CSS or SVG. Never a visual treatment that isn't written down.
   - Base or sub-brand: if every product would use it, it goes in `BRAND_SYSTEM.md`;
-    if it's identity, in `brands/<name>/BRAND.md`.
+    if it's identity, in `brands/<name>/BRAND.md`. The personal sub-brand is the named
+    exception: its whole visual system is in `brands/personal/`, and a change to it
+    starts in the design lab (its `BRAND.md` §6).
   - Projects copy files from here. Change here first, then copy into the project.
 - **Overrides:**
   - **Section 2 (Design).** This repository *is* the design for how things look, so it

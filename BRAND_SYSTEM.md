@@ -2,12 +2,14 @@
 
 **Sheet:** BRAND-002
 **Issued:** 2026-09-30
-**Revision:** 16
+**Revision:** 17
 **Supersedes:** BRAND-001 (specimen)
 
-This file is the authority on what this system looks like. It governs every site, app, PDF, Word document, deck, and carousel built on it. When a rule here conflicts with anything else, or with an existing stylesheet, this file wins.
+This file is the authority on what this system looks like. It governs every site, app, PDF, Word document, deck, and carousel built on it, except the independent sub-brand named below. When a rule here conflicts with anything else, or with an existing stylesheet, this file wins.
 
-**Sub-brands.** Each sub-brand lives in `brands/<name>/BRAND.md` and adds identity only: its mark, product names and glyphs, and document registers. A sub-brand may use the exceptions this file names for it and may not override any other rule. Current sub-brands: Construction OS (`brands/construction-os/BRAND.md`).
+**Sub-brands.** Each sub-brand lives in `brands/<name>/BRAND.md` and adds identity only: its mark, product names and glyphs, and document registers. A sub-brand may use the exceptions this file names for it and may not override any other rule. Current sub-brands: Construction OS (`brands/construction-os/BRAND.md`), and Personal (`brands/personal/BRAND.md`), the independent sub-brand below.
+
+**Independent sub-brand.** `brands/personal/` (BRAND-004) is an independent visual system for justinyurasits.com. §1–§10 of this file don't apply to it; its rules are its own `BRAND.md` and the approved handoff it names, and Claude Code reads that file instead of §1–§10 for its work. §11, §12 and the WCAG 2.2 AA floor do apply. No other sub-brand may claim this exception without a revision of this file.
 
 **For Claude Code:** read this file before changing anything visual. Replace existing styles rather than reconciling with them — merging two systems built to different rules produces neither. If you need a visual treatment that is not defined here, add it to this file first, with its reasoning, and increment the revision. Do not invent one-off treatments in page code.
 
@@ -299,3 +301,4 @@ Claude Code may not introduce a visual treatment not defined here. If a page nee
 | 14 | 2026-11-19 | Split into base and sub-brand. Moved to `brands/construction-os/BRAND.md`: the mark, the four product glyphs (§10), the product wordmark names and setting (§3), and the `CASE`/`AOS`/`SOW`/`SPEC`/`FN` registers (§6). Base keeps the rules, generalised: §3 and §4 exceptions now apply to any sub-brand; §6 keeps the format and `BRAND`; §10 allows a sub-brand glyph family. Sub-brand rule added to the header. No token or visual change. |
 | 15 | 2026-11-19 | §7: interactive states added. Hover and focus change fill or line weight, never hue — filled buttons invert to outline, ghost buttons fill, link underlines step from object to cut weight, muted links step to `--fg`, focus is a 2px `--fg` outline. Records what `brand.css` already does; needed because `cos-header.css` hovered to the retired steel and no rule said what replaces it. No token change. |
 | 16 | 2026-11-19 | `components.html` rebuilt on the rev 08 palette. No rule or token change. Surface gallery now shows the five current surfaces (white, bond, ink, navy, oxblood); steel removed. Dimension demos on white, bond, ink and navy using `--change`, with a note that none appears on oxblood (§8 rule 7). Labels name role and palette tokens with their §2.1 contrast ratios; hex values are read from `tokens.css` at render time, so the page holds no hard-coded colors. |
+| 17 | 2026-11-23 | Wording only, no token, CSS or Construction OS change. Added the independent sub-brand: `brands/personal/` (BRAND-004) is its own visual system for justinyurasits.com, with §1–§10 not applying to it and §11, §12 and the AA floor applying. Reason: Justin approved a separate visual direction for his personal site, and making it a named exception is the smallest change that keeps Construction OS's rules, assets and consumers unchanged. |

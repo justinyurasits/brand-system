@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing — Justin Yurasits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Justin Yurasits</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html">Demos</a></li>
+          <li><a href="writing.html" aria-current="page">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a href="work-with-me.html" class="btn btn-primary btn-sm">Work with me →</a>
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="demos.html">Demos</a></li>
+        <li><a href="writing.html" aria-current="page">Writing</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work-with-me.html" class="mobile-cta">Work with me →</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <div class="page-intro">
+    <div class="container">
+      <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Ideas &amp; Perspectives</p>
+      <h1>Writing</h1>
+      <p class="lead">Long-form thinking on enterprise AI product leadership and AI for the construction industry. Articles below are drafts or working pieces; publication status is noted where relevant.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="writing-layout">
+
+      <!-- Featured article -->
+      <section aria-labelledby="featured-heading">
+        <div class="writing-featured">
+          <div>
+            <p class="featured-eyebrow">Featured · Enterprise AI</p>
+            <h2 class="featured-title" id="featured-heading">
+              <a href="article.html">The Goal Isn't Fewer AI Intents</a>
+            </h2>
+            <p class="featured-desc">A common pattern in conversational AI product design is to treat intent proliferation as a failure. It isn't. The goal is well-designed intent handling — and that requires a different mental model than count reduction.</p>
+            <div class="featured-actions">
+              <a href="article.html" class="btn btn-primary">Read the article →</a>
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+          <div class="featured-cover" role="img" aria-label="Featured article cover — placeholder">
+            <span>Article cover placeholder</span>
+            <span class="ph-note">Replace with article cover image</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter + list -->
+      <section aria-labelledby="all-writing-heading">
+        <div class="section-header">
+          <h2 id="all-writing-heading">All writing</h2>
+        </div>
+        <div class="writing-controls" role="group" aria-label="Filter articles by category" data-filter-group="writing">
+          <span class="writing-controls-label" aria-hidden="true">Filter</span>
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="enterprise" aria-pressed="false">Enterprise AI</button>
+          <button type="button" class="chip" data-filter="construction" aria-pressed="false">Construction AI</button>
+          <button type="button" class="chip" data-filter="systems" aria-pressed="false">AI Systems</button>
+          <p class="sr-only" aria-live="polite" data-filter-status></p>
+        </div>
+
+        <div class="article-list-full" role="list">
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="enterprise">
+            <div>
+              <p class="article-list-category">Enterprise AI &amp; Product Leadership</p>
+              <h3 class="article-list-title"><a href="article.html">The Goal Isn't Fewer AI Intents</a></h3>
+              <p class="article-list-desc">Intent proliferation is a symptom, not the disease. What it actually signals about how you're thinking about conversational AI product design — and what to focus on instead.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="construction">
+            <div>
+              <p class="article-list-category">AI for Construction</p>
+              <h3 class="article-list-title"><a href="writing.html">Applying AI in Construction: Where to Start</a></h3>
+              <p class="article-list-desc">Most construction AI conversations start with the technology. The right starting point is the operational problem — which ones are expensive, frequent, and currently underserved by better data or faster decisions.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="systems">
+            <div>
+              <p class="article-list-category">AI Systems</p>
+              <h3 class="article-list-title"><a href="writing.html">Designing Agentic Systems That Fail Gracefully</a></h3>
+              <p class="article-list-desc">Agentic systems fail in ways that feel different from traditional software — often silently, mid-task, and with plausible-looking outputs. What failure-graceful design means and how to build for it.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="enterprise">
+            <div>
+              <p class="article-list-category">Enterprise AI &amp; Product Leadership</p>
+              <h3 class="article-list-title"><a href="writing.html">Evaluation Is a Product Problem</a></h3>
+              <p class="article-list-desc">LLM evaluation is usually treated as an engineering discipline. The decisions that make evaluation valuable — what to measure, how to weight it, when good enough is good enough — are product decisions.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="construction">
+            <div>
+              <p class="article-list-category">AI for Construction</p>
+              <h3 class="article-list-title"><a href="writing.html">What Construction Data Actually Looks Like</a></h3>
+              <p class="article-list-desc">Before you can build AI systems for construction, you have to understand the data — which is scattered, inconsistently structured, and often locked in formats that resist automation. Here's what you're actually working with.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+          <div class="article-list-item" role="listitem" data-filter-item="writing" data-tags="systems">
+            <div>
+              <p class="article-list-category">AI Systems</p>
+              <h3 class="article-list-title"><a href="writing.html">When to Build a Context Layer</a></h3>
+              <p class="article-list-desc">Not every AI application needs a custom context or retrieval layer. When one is genuinely necessary, how to scope it correctly, and the common traps in RAG implementations for domain-specific applications.</p>
+            </div>
+            <div class="article-list-aside">
+              <span class="status-pill">Draft</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="footer-brand" aria-label="Justin Yurasits — home">
+          <span class="footer-logo" aria-hidden="true">JY</span>
+          <span>
+            <strong>Justin Yurasits</strong>
+            <span>AI Product Leadership</span>
+          </span>
+        </a>
+      </div>
+      <nav class="footer-group footer-group-site" aria-labelledby="footer-site-heading">
+        <h2 class="footer-heading" id="footer-site-heading">Site</h2>
+        <ul class="footer-list footer-list-2col">
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html">Demos</a></li>
+          <li><a href="writing.html" aria-current="page">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work-with-me.html">Work with me</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-consulting-heading">
+        <h2 class="footer-heading" id="footer-consulting-heading">Consulting</h2>
+        <ul class="footer-list">
+          <li><a href="work-with-me.html#enterprise">Enterprise AI</a></li>
+          <li><a href="work-with-me.html#construction">Construction AI</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-contact-heading">
+        <h2 class="footer-heading" id="footer-contact-heading">Contact</h2>
+        <ul class="footer-list">
+          <li><a href="#" aria-label="LinkedIn (link placeholder)">LinkedIn</a></li>
+          <li><a href="#" aria-label="Email (address placeholder)">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

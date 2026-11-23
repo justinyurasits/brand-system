@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Goal Isn't Fewer AI Intents — Justin Yurasits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Justin Yurasits</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html">Demos</a></li>
+          <li><a href="writing.html" aria-current="true">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a href="work-with-me.html" class="btn btn-primary btn-sm">Work with me →</a>
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="demos.html">Demos</a></li>
+        <li><a href="writing.html" aria-current="true">Writing</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work-with-me.html" class="mobile-cta">Work with me →</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <div class="article-wrapper">
+    <div class="container">
+      <div class="article-page-layout">
+
+        <!-- TOC sidebar (desktop only) -->
+        <aside class="article-toc" aria-label="Table of contents">
+          <p class="article-toc-label">Contents</p>
+          <nav>
+            <ol>
+              <li><a href="#s1">The proliferation pattern</a></li>
+              <li><a href="#s2">Why count is a proxy metric</a></li>
+              <li><a href="#s3">The routing model fallacy</a></li>
+              <li><a href="#s4">A better model</a></li>
+              <li><a href="#s5">Practical implications</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <!-- Article body -->
+        <article>
+          <header class="article-header">
+            <div class="article-category">
+              <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span>Enterprise AI &amp; Product Leadership</p>
+              <span class="status-pill">Draft</span>
+            </div>
+            <h1 class="article-h1">The Goal Isn't Fewer AI Intents</h1>
+            <p class="article-deck">Intent proliferation is a symptom, not the disease. What it actually signals about how you're thinking about conversational AI product design — and what to focus on instead.</p>
+            <div class="article-byline">
+              <span class="article-byline-name">Justin Yurasits</span>
+              <span class="article-byline-sep" aria-hidden="true">·</span>
+              <span>Draft — not for publication</span>
+            </div>
+          </header>
+
+          <div class="article-prose">
+
+            <h2 id="s1">The proliferation pattern</h2>
+            <p>At some point in the development of almost every conversational AI product, the same thing happens: the intent list gets long. What started as ten intents becomes thirty, then eighty, then a spreadsheet nobody wants to open. Teams respond by calling this a problem and setting a goal to reduce the count.</p>
+            <p>This is the wrong response — not because intent count doesn't matter, but because treating reduction as the goal misidentifies what the count is actually telling you.</p>
+            <p>Intent proliferation is a symptom. It usually signals one or more of the following: unclear boundaries between what the system is supposed to handle and what it isn't, insufficient context-awareness that forces you to disambiguate at the routing layer, or a system designed around discrete task-handling rather than continuous understanding. Reducing count without addressing the underlying cause produces a different kind of mess — fewer intents that each try to do too much, and a system that fails less obviously but more often.</p>
+
+            <h2 id="s2">Why count is a proxy metric</h2>
+            <p>Metrics earn their place by tracking something that matters. Intent count tracks the size of your routing taxonomy. That's not nothing — a taxonomy that's grown to 400 intents for a task-focused assistant is a signal worth attending to. But count doesn't tell you whether your system handles user goals well, whether it recovers gracefully from ambiguity, or whether users are getting what they need.</p>
+            <p>Teams that optimize for count reduction tend to end up with one of two failure modes:</p>
+            <ol>
+              <li><strong>Merged intents that collapse distinct behaviors</strong> — "get schedule" and "get schedule for next week" become one intent, the system handles the unqualified case fine, and fails silently on the time-qualified one because the prompt template wasn't designed for it.</li>
+              <li><strong>Broad intents that shift complexity downstream</strong> — "construction query" becomes a catch-all that routes to a handler with its own internal disambiguation logic, reproducing the routing problem one layer deeper in the stack.</li>
+            </ol>
+            <p>Neither of these is better than a larger intent list that's well-structured. What matters is whether the taxonomy accurately reflects the space of user goals you're handling and whether each intent maps to behavior that actually serves those goals.</p>
+
+            <h2 id="s3">The routing model fallacy</h2>
+            <p>A deeper issue behind both of these failure modes is treating conversational AI routing as a classification problem. Traditional NLU systems classified utterances into intents and dispatched to handlers. That model made sense when the handlers were rigid rule-based flows. It makes less sense when the handlers are language models that can reason about context — but many teams carry the classification mental model forward anyway.</p>
+            <p>Here's what a typical intent configuration looks like in a system following this pattern:</p>
+
+            <pre class="code-block" tabindex="0" role="region" aria-label="Example intent configuration showing anti-pattern"><code><span class="cc"># Intent configuration — anti-pattern example</span>
+<span class="cc"># Intents proliferate because disambiguation happens at the routing layer</span>
+
+<span class="ck">intents</span>:
+  - <span class="ck">name</span>: <span class="cs">get_schedule</span>
+    <span class="ck">description</span>: <span class="cs">"User asks about project schedule"</span>
+
+  - <span class="ck">name</span>: <span class="cs">get_schedule_specific_task</span>
+    <span class="ck">description</span>: <span class="cs">"User asks about a specific task in the schedule"</span>
+
+  - <span class="ck">name</span>: <span class="cs">get_schedule_specific_task_delayed</span>
+    <span class="ck">description</span>: <span class="cs">"User asks about a delayed specific task"</span>
+
+  - <span class="ck">name</span>: <span class="cs">get_schedule_next_week</span>
+    <span class="ck">description</span>: <span class="cs">"User asks about next week's schedule"</span>
+
+  - <span class="ck">name</span>: <span class="cs">get_schedule_next_week_specific_phase</span>
+    <span class="ck">description</span>: <span class="cs">"User asks about a specific phase next week"</span>
+<span class="cc">
+# This continues. The router is doing work the LLM handler could do itself.</span></code></pre>
+
+            <p>The problem here isn't the number of intents — it's that each intent represents a distinction the LLM handler could make on its own if the system provided adequate context. The router is acting as a disambiguation layer for a system that doesn't need one.</p>
+
+            <h2 id="s4">A better model</h2>
+            <p>A more useful framing is to think about intent routing as scope management, not classification. The question isn't "which handler should process this utterance" but rather "what does this utterance need to be handled well, and does this system have that capability?"</p>
+
+            <!-- Diagram -->
+            <div class="article-diagram" role="img" aria-label="Two routing models compared: classification model versus scope management model">
+              <div class="diagram-scroll">
+              <svg viewBox="0 0 620 170" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" aria-hidden="true">
+                <!-- Left: Classification model -->
+                <text x="135" y="20" font-family="Inter, system-ui" font-size="11" fill="#5B6875" text-anchor="middle" font-weight="600">Classification model</text>
+                <rect x="10" y="30" width="80" height="34" rx="5" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="50" y="51" font-family="Inter, system-ui" font-size="9.5" fill="#112A42" text-anchor="middle">Input</text>
+                <path d="M90 47h18" stroke="#5B6875" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <rect x="108" y="30" width="80" height="34" rx="5" fill="#E6EDF3" stroke="#54789A" stroke-width="1.5"/>
+                <text x="148" y="51" font-family="Inter, system-ui" font-size="9.5" fill="#112A42" text-anchor="middle">Classifier</text>
+                <path d="M188 38l14-10M188 47l14 0M188 56l14 10" stroke="#5B6875" stroke-width="1.5"/>
+                <!-- Three handlers -->
+                <rect x="202" y="18" width="60" height="22" rx="4" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="232" y="33" font-family="Inter, system-ui" font-size="8" fill="#3D4B59" text-anchor="middle">Handler A</text>
+                <rect x="202" y="47" width="60" height="22" rx="4" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="232" y="62" font-family="Inter, system-ui" font-size="8" fill="#3D4B59" text-anchor="middle">Handler B</text>
+                <rect x="202" y="76" width="60" height="22" rx="4" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="232" y="91" font-family="Inter, system-ui" font-size="8" fill="#3D4B59" text-anchor="middle">Handler C</text>
+                <text x="264" y="51" font-family="Inter, system-ui" font-size="8.5" fill="#5B6875">…</text>
+
+                <!-- Divider -->
+                <line x1="310" y1="10" x2="310" y2="130" stroke="#E3DED6" stroke-width="1" stroke-dasharray="4 3"/>
+
+                <!-- Right: Scope management model -->
+                <text x="470" y="20" font-family="Inter, system-ui" font-size="11" fill="#5B6875" text-anchor="middle" font-weight="600">Scope management model</text>
+                <rect x="325" y="30" width="80" height="34" rx="5" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="365" y="51" font-family="Inter, system-ui" font-size="9.5" fill="#112A42" text-anchor="middle">Input + context</text>
+                <path d="M405 47h18" stroke="#5B6875" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <rect x="423" y="22" width="90" height="50" rx="5" fill="#E6EDF3" stroke="#54789A" stroke-width="1.5"/>
+                <text x="468" y="43" font-family="Inter, system-ui" font-size="9.5" fill="#112A42" text-anchor="middle" font-weight="600">In scope?</text>
+                <text x="468" y="57" font-family="Inter, system-ui" font-size="8" fill="#3D4B59" text-anchor="middle">LLM + tools</text>
+                <path d="M513 47h18" stroke="#5B6875" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <rect x="531" y="30" width="80" height="34" rx="5" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1.5"/>
+                <text x="571" y="51" font-family="Inter, system-ui" font-size="9.5" fill="#112A42" text-anchor="middle">Response</text>
+                <!-- Out of scope arrow down -->
+                <path d="M468 72v22" stroke="#C8D4DB" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <rect x="430" y="94" width="76" height="22" rx="4" fill="#F8F5F0" stroke="#C8D4DB" stroke-width="1"/>
+                <text x="468" y="109" font-family="Inter, system-ui" font-size="8" fill="#5B6875" text-anchor="middle">Out of scope →</text>
+
+                <!-- Labels -->
+                <text x="135" y="145" font-family="Inter, system-ui" font-size="9" fill="#5B6875" text-anchor="middle">Disambiguation happens at routing layer.</text>
+                <text x="135" y="158" font-family="Inter, system-ui" font-size="9" fill="#5B6875" text-anchor="middle">Intent count grows with edge cases.</text>
+                <text x="470" y="145" font-family="Inter, system-ui" font-size="9" fill="#5B6875" text-anchor="middle">Disambiguation happens inside the LLM.</text>
+                <text x="470" y="158" font-family="Inter, system-ui" font-size="9" fill="#5B6875" text-anchor="middle">Routing governs scope, not behavior.</text>
+              </svg>
+              </div>
+              <p class="diagram-caption">Two models for intent routing. On the left: classification routes to N handlers; edge cases produce new intents. On the right: scope check decides in-or-out; the LLM handles disambiguation within scope.</p>
+            </div>
+
+            <p>In the scope management model, the routing layer answers one question: is this request within the scope of what this system is designed to handle? If yes, the request goes to a capable handler with the context it needs. If no, the system declines gracefully and explains what it can help with.</p>
+            <p>Disambiguation — figuring out exactly what the user means within a given scope — is left to the LLM handler, which is better equipped for it than a classifier anyway. This doesn't eliminate the need for routing structure, but it changes what that structure is for.</p>
+
+            <h2 id="s5">Practical implications</h2>
+            <p>Concretely, this means a few things when designing or reviewing a conversational AI system:</p>
+            <ul>
+              <li><strong>Define scope before you define intents.</strong> What is this system actually for? The answer to that question should be legible to users, not just to developers. If your scope definition is fuzzy, your intents will be too.</li>
+              <li><strong>Push disambiguation downstream.</strong> If you find yourself creating intents to handle variations of the same underlying goal, ask whether the handler could handle that variation itself given adequate context — history, session state, retrieved data.</li>
+              <li><strong>Measure what matters.</strong> Task completion rate, user recovery from failure, and fallback frequency tell you more about system quality than intent count. Count is an input to those metrics, not a substitute for them.</li>
+              <li><strong>Distinguish scope failures from handling failures.</strong> When the system fails, determine whether it failed because the request was out of scope and the system didn't recognize it, or because the request was in scope and the handler produced the wrong output. These require different fixes.</li>
+            </ul>
+            <p>None of this means intent architecture doesn't matter. Clear, well-scoped intent definitions make systems easier to reason about, test, and maintain. The goal is a well-designed intent taxonomy, not a small one — and those are different targets.</p>
+
+            <div class="article-references">
+              <h2>Notes</h2>
+              <ol>
+                <li>This article reflects patterns observed across conversational AI product design. It is not based on published research and should be read as a practitioner perspective, not a formal study.</li>
+                <li>The classification vs. scope management framing is a simplification for exposition. In practice, most systems combine elements of both approaches.</li>
+                <li>The code example shows a simplified YAML configuration for illustration. No specific platform or framework is implied.</li>
+              </ol>
+            </div>
+
+          </div><!-- /article-prose -->
+
+          <!-- Related content -->
+          <div class="related-section">
+            <h2>Related</h2>
+            <div class="related-grid">
+              <a href="writing.html" class="related-card">
+                <p class="related-card-category">AI Systems</p>
+                <span class="related-card-title">Designing Agentic Systems That Fail Gracefully</span>
+              </a>
+              <a href="writing.html" class="related-card">
+                <p class="related-card-category">Enterprise AI</p>
+                <span class="related-card-title">Evaluation Is a Product Problem</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+      </div><!-- /article-page-layout -->
+    </div><!-- /container -->
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="footer-brand" aria-label="Justin Yurasits — home">
+          <span class="footer-logo" aria-hidden="true">JY</span>
+          <span>
+            <strong>Justin Yurasits</strong>
+            <span>AI Product Leadership</span>
+          </span>
+        </a>
+      </div>
+      <nav class="footer-group footer-group-site" aria-labelledby="footer-site-heading">
+        <h2 class="footer-heading" id="footer-site-heading">Site</h2>
+        <ul class="footer-list footer-list-2col">
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="demos.html">Demos</a></li>
+          <li><a href="writing.html" aria-current="true">Writing</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work-with-me.html">Work with me</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-consulting-heading">
+        <h2 class="footer-heading" id="footer-consulting-heading">Consulting</h2>
+        <ul class="footer-list">
+          <li><a href="work-with-me.html#enterprise">Enterprise AI</a></li>
+          <li><a href="work-with-me.html#construction">Construction AI</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-labelledby="footer-contact-heading">
+        <h2 class="footer-heading" id="footer-contact-heading">Contact</h2>
+        <ul class="footer-list">
+          <li><a href="#" aria-label="LinkedIn (link placeholder)">LinkedIn</a></li>
+          <li><a href="#" aria-label="Email (address placeholder)">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
