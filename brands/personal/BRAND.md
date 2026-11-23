@@ -25,8 +25,11 @@ The design-lab handoff Justin approved as the working visual direction on 2026-1
   verbatim. They show how the components fit together. They're a reference, not
   production code: build components from the handoff and tokens, and don't copy these
   pages wholesale.
-- **[`screenshots/`](screenshots/):** the v4 set (Training, About, Work with me, footer, at
-  1280px and 375px), compressed to WebP.
+- **[`screenshots/`](screenshots/):** compressed to WebP, each page at 1280px and 375px.
+  The v4 set (`01`–`04`) shows the final Training, About, Work with me and footer. The
+  `v3-` set covers the five pages v4 didn't re-shoot: homepage, Solutions, Demos, Writing
+  and Article. Their footers, and any shared component v4 changed, predate v4. Where a
+  `v3-` screenshot differs from the v4 set, the handoff or `styles.css`, those win.
 
 Where the handoff and its earlier `justinyurasits_v2_visual_design_direction_v0.1.md`
 disagree, the handoff and `styles.css` win; the direction doc isn't copied here.
